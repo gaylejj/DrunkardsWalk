@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires permissions to track your pub run.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This isn&apos;t doing anything right now...</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

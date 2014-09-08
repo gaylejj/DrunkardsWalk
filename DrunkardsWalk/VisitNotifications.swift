@@ -81,13 +81,19 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
         
     }
     
-    //MARK: CLLocationManager
+    //MARK: - CLLocationManager
+    //MARK: Region Monitoring
     func locationManager(manager: CLLocationManager!, didEnterRegion region: CLRegion!) {
         println("Entered region: \(region)")
     }
     
     func locationManager(manager: CLLocationManager!, didExitRegion region: CLRegion!) {
         println("Exited region: \(region)")
+    }
+    
+    //MARK: Visit Monitoring
+    func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!) {
+//        <#code#>
     }
 }
 

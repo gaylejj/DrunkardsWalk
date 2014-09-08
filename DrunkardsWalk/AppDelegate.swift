@@ -18,7 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil))
+        var currentSettings = application.currentUserNotificationSettings()
+
+        var types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        application.registerUserNotificationSettings(settings)
         
         return true
     }
@@ -57,7 +61,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //UIApplicationOpenSettingsURLString
+    //TODO: Notification Settings.
     
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+        var currentSettings = application.currentUserNotificationSettings()
+        
+        if notificationSettings != currentSettings {
+            
+        } else {
+            
+        }
+    }
     
     //MARK: - LocalNotifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
