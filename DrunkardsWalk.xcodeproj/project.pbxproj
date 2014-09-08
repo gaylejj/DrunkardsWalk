@@ -11,6 +11,7 @@
 		252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */; };
 		252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5F19BA7096007A3879 /* humanRightFoot.png */; };
 		252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B6019BA7096007A3879 /* humanRightFoot18px.png */; };
+		3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */; };
 		42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2D19BA69950032B533 /* AppDelegate.swift */; };
 		42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */; };
 		42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA3219BA69950032B533 /* MapViewController.swift */; };
@@ -35,6 +36,7 @@
 		252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
 		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
 		252C0B6019BA7096007A3879 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
+		3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitNotifications.swift; sourceTree = "<group>"; };
 		42CDDA2819BA69950032B533 /* DrunkardsWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrunkardsWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDDA2C19BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDDA2D19BA69950032B533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */,
 				42CDDA2B19BA69950032B533 /* Supporting Files */,
 				4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */,
+				3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */,
 			);
 			path = DrunkardsWalk;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
+				3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */,
 				42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */,
 				4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */,
 				42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */,

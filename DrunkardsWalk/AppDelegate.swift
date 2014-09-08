@@ -13,10 +13,13 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
-
-
+    var alert : UIAlertController?
+    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil))
+        
         return true
     }
 
@@ -42,6 +45,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+    }
+    
+    
+    //MARK: - LocalNotifications
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        println("Received")
+        
+        if application.applicationState == UIApplicationState.Active {
+            if alert == nil {
+                self.alert = UIAlertController(title: "Hey!", message: "\(notification.alertBody)", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                var okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
+                self.alert?.addAction(okay)
+            }
+        }
+        self.window!.rootViewController.presentViewController(self.alert, animated: true, completion: nil)
+        
     }
 
     // MARK: - Core Data stack
