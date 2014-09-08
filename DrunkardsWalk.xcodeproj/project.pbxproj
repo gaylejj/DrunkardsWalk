@@ -195,6 +195,14 @@
 				TargetAttributes = {
 					42CDDA2719BA69950032B533 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					42CDDA3C19BA69950032B533 = {
 						CreatedOnToolsVersion = 6.0;

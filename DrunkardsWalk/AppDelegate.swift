@@ -47,6 +47,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
+    //MARK: - URL
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+        //This will be used to open up a pub crawl from a NSURL string (we can use this to our advantage by hashing states to persist them or something.
+        
+        //NOTE: As of iOS8 Use this to open up settings: NSURL(string: UIApplicationOpenSettingsURLString)
+        
+        return true
+    }
+    
+    //UIApplicationOpenSettingsURLString
+    
     
     //MARK: - LocalNotifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
