@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5D19BA7096007A3879 /* humanLeftFoot.png */; };
+		252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */; };
+		252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5F19BA7096007A3879 /* humanRightFoot.png */; };
+		252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B6019BA7096007A3879 /* humanRightFoot18px.png */; };
 		42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2D19BA69950032B533 /* AppDelegate.swift */; };
 		42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */; };
 		42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA3219BA69950032B533 /* MapViewController.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		252C0B5D19BA7096007A3879 /* humanLeftFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot.png; sourceTree = "<group>"; };
+		252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
+		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
+		252C0B6019BA7096007A3879 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
 		42CDDA2819BA69950032B533 /* DrunkardsWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrunkardsWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDDA2C19BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDDA2D19BA69950032B533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +64,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		252C0B5B19BA7096007A3879 /* Drunkard's Walk Digital Assets */ = {
+			isa = PBXGroup;
+			children = (
+				252C0B5C19BA7096007A3879 /* Feet */,
+			);
+			path = "Drunkard's Walk Digital Assets";
+			sourceTree = "<group>";
+		};
+		252C0B5C19BA7096007A3879 /* Feet */ = {
+			isa = PBXGroup;
+			children = (
+				252C0B5D19BA7096007A3879 /* humanLeftFoot.png */,
+				252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */,
+				252C0B5F19BA7096007A3879 /* humanRightFoot.png */,
+				252C0B6019BA7096007A3879 /* humanRightFoot18px.png */,
+			);
+			path = Feet;
+			sourceTree = "<group>";
+		};
 		42CDDA1F19BA69950032B533 = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +117,7 @@
 		42CDDA2B19BA69950032B533 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				252C0B5B19BA7096007A3879 /* Drunkard's Walk Digital Assets */,
 				42CDDA2C19BA69950032B533 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -192,6 +220,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
+				252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */,
+				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
+				252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */,
 				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,
 				42CDDA3819BA69950032B533 /* Images.xcassets in Resources */,
 			);
@@ -401,6 +433,7 @@
 				42CDDA4919BA69950032B533 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42CDDA4A19BA69950032B533 /* Build configuration list for PBXNativeTarget "DrunkardsWalkTests" */ = {
 			isa = XCConfigurationList;
@@ -409,6 +442,7 @@
 				42CDDA4C19BA69950032B533 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
