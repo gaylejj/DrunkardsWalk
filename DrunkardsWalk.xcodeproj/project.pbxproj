@@ -17,6 +17,7 @@
 		42CDDA3619BA69950032B533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDDA3419BA69950032B533 /* Main.storyboard */; };
 		42CDDA3819BA69950032B533 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDDA3719BA69950032B533 /* Images.xcassets */; };
 		42CDDA4419BA69950032B533 /* DrunkardsWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */; };
+		4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		42CDDA3D19BA69950032B533 /* DrunkardsWalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrunkardsWalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDDA4219BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrunkardsWalkTests.swift; sourceTree = "<group>"; };
+		4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				42CDDA3719BA69950032B533 /* Images.xcassets */,
 				42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */,
 				42CDDA2B19BA69950032B533 /* Supporting Files */,
+				4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */,
 			);
 			path = DrunkardsWalk;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			files = (
 				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
 				42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */,
+				4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */,
 				42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
