@@ -13,12 +13,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    var notificationController = NotificationController()
     var alert : UIAlertController?
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil))
+        
+        //This is where I need to modify to allow notifications and usch happen.
+        var currentSettings = application.currentUserNotificationSettings()
+
+        var types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        
+        //Notification related stuff.
         
         return true
     }
@@ -47,8 +56,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
+    //MARK: - URL
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
+        //This will be used to open up a pub crawl from a NSURL string (we can use this to our advantage by hashing states to persist them or something.
+        
+        //NOTE: As of iOS8 Use this to open up settings: NSURL(string: UIApplicationOpenSettingsURLString)
+        
+        return true
+    }
     
-    //MARK: - LocalNotifications
+    //UIApplicationOpenSettingsURLString
+    
+    
+    //MARK: - Notifications
+    //TODO: Notification Settings.
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        
+        var currentSettings = application.currentUserNotificationSettings()
+        
+        if notificationSettings != currentSettings {
+            
+        } else {
+            
+        }
+    }
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         println("Received")
         
@@ -62,6 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         self.window!.rootViewController.presentViewController(self.alert, animated: true, completion: nil)
         
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        completionHandler()
     }
 
     // MARK: - Core Data stack
