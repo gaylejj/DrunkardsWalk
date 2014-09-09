@@ -23,6 +23,7 @@
 		42CDDA3819BA69950032B533 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDDA3719BA69950032B533 /* Images.xcassets */; };
 		42CDDA4419BA69950032B533 /* DrunkardsWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */; };
 		4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */; };
+		4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		42CDDA4219BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrunkardsWalkTests.swift; sourceTree = "<group>"; };
 		4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchEngine.swift; sourceTree = "<group>"; };
+		4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				42CDDA2D19BA69950032B533 /* AppDelegate.swift */,
 				42CDDA3219BA69950032B533 /* MapViewController.swift */,
 				4233548519BE16CE009C34D9 /* RandomWalk.swift */,
+				4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */,
 				42CDDA3419BA69950032B533 /* Main.storyboard */,
 				42CDDA3719BA69950032B533 /* Images.xcassets */,
 				42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */,
@@ -273,6 +276,7 @@
 			files = (
 				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
 				3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */,
+				4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */,
 				42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */,
 				4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */,
 				25C527FE19BE70BF007FBE80 /* WalkOverlayViewController.swift in Sources */,
