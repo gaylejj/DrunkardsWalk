@@ -1,6 +1,3 @@
-# API Keys
-google.plist
-
 # OSX Finder
 .DS_Store
 
@@ -15,6 +12,7 @@ project.xcworkspace/
 *.xcworkspace
 *.xcuserstate
 xcuserdata
+*.storyboard
 
 # Build products
 build/
