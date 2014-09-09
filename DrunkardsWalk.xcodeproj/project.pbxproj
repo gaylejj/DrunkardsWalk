@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5D19BA7096007A3879 /* humanLeftFoot.png */; };
+		252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */; };
+		252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5F19BA7096007A3879 /* humanRightFoot.png */; };
+		252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B6019BA7096007A3879 /* humanRightFoot18px.png */; };
+		42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2D19BA69950032B533 /* AppDelegate.swift */; };
+		42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */; };
+		42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA3219BA69950032B533 /* MapViewController.swift */; };
+		42CDDA3619BA69950032B533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDDA3419BA69950032B533 /* Main.storyboard */; };
+		42CDDA3819BA69950032B533 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDDA3719BA69950032B533 /* Images.xcassets */; };
+		42CDDA4419BA69950032B533 /* DrunkardsWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */; };
+		4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */; };
+		4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42CDDA3E19BA69950032B533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42CDDA2019BA69950032B533 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42CDDA2719BA69950032B533;
+			remoteInfo = DrunkardsWalk;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		252C0B5D19BA7096007A3879 /* humanLeftFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot.png; sourceTree = "<group>"; };
+		252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
+		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
+		252C0B6019BA7096007A3879 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
+		42CDDA2819BA69950032B533 /* DrunkardsWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrunkardsWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42CDDA2C19BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42CDDA2D19BA69950032B533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42CDDA3019BA69950032B533 /* DrunkardsWalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DrunkardsWalk.xcdatamodel; sourceTree = "<group>"; };
+		42CDDA3219BA69950032B533 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		42CDDA3519BA69950032B533 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		42CDDA3719BA69950032B533 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		42CDDA3D19BA69950032B533 /* DrunkardsWalkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrunkardsWalkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42CDDA4219BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrunkardsWalkTests.swift; sourceTree = "<group>"; };
+		4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchEngine.swift; sourceTree = "<group>"; };
+		4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42CDDA2519BA69950032B533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42CDDA3A19BA69950032B533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		252C0B5B19BA7096007A3879 /* Drunkard's Walk Digital Assets */ = {
+			isa = PBXGroup;
+			children = (
+				252C0B5C19BA7096007A3879 /* Feet */,
+			);
+			path = "Drunkard's Walk Digital Assets";
+			sourceTree = "<group>";
+		};
+		252C0B5C19BA7096007A3879 /* Feet */ = {
+			isa = PBXGroup;
+			children = (
+				252C0B5D19BA7096007A3879 /* humanLeftFoot.png */,
+				252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */,
+				252C0B5F19BA7096007A3879 /* humanRightFoot.png */,
+				252C0B6019BA7096007A3879 /* humanRightFoot18px.png */,
+			);
+			path = Feet;
+			sourceTree = "<group>";
+		};
+		42CDDA1F19BA69950032B533 = {
+			isa = PBXGroup;
+			children = (
+				42CDDA2A19BA69950032B533 /* DrunkardsWalk */,
+				42CDDA4019BA69950032B533 /* DrunkardsWalkTests */,
+				42CDDA2919BA69950032B533 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		42CDDA2919BA69950032B533 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42CDDA2819BA69950032B533 /* DrunkardsWalk.app */,
+				42CDDA3D19BA69950032B533 /* DrunkardsWalkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42CDDA2A19BA69950032B533 /* DrunkardsWalk */ = {
+			isa = PBXGroup;
+			children = (
+				42CDDA2D19BA69950032B533 /* AppDelegate.swift */,
+				42CDDA3219BA69950032B533 /* MapViewController.swift */,
+				4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */,
+				42CDDA3419BA69950032B533 /* Main.storyboard */,
+				42CDDA3719BA69950032B533 /* Images.xcassets */,
+				42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */,
+				42CDDA2B19BA69950032B533 /* Supporting Files */,
+				4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */,
+			);
+			path = DrunkardsWalk;
+			sourceTree = "<group>";
+		};
+		42CDDA2B19BA69950032B533 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				252C0B5B19BA7096007A3879 /* Drunkard's Walk Digital Assets */,
+				42CDDA2C19BA69950032B533 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		42CDDA4019BA69950032B533 /* DrunkardsWalkTests */ = {
+			isa = PBXGroup;
+			children = (
+				42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */,
+				42CDDA4119BA69950032B533 /* Supporting Files */,
+			);
+			path = DrunkardsWalkTests;
+			sourceTree = "<group>";
+		};
+		42CDDA4119BA69950032B533 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				42CDDA4219BA69950032B533 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42CDDA2719BA69950032B533 /* DrunkardsWalk */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42CDDA4719BA69950032B533 /* Build configuration list for PBXNativeTarget "DrunkardsWalk" */;
+			buildPhases = (
+				42CDDA2419BA69950032B533 /* Sources */,
+				42CDDA2519BA69950032B533 /* Frameworks */,
+				42CDDA2619BA69950032B533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrunkardsWalk;
+			productName = DrunkardsWalk;
+			productReference = 42CDDA2819BA69950032B533 /* DrunkardsWalk.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42CDDA3C19BA69950032B533 /* DrunkardsWalkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42CDDA4A19BA69950032B533 /* Build configuration list for PBXNativeTarget "DrunkardsWalkTests" */;
+			buildPhases = (
+				42CDDA3919BA69950032B533 /* Sources */,
+				42CDDA3A19BA69950032B533 /* Frameworks */,
+				42CDDA3B19BA69950032B533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42CDDA3F19BA69950032B533 /* PBXTargetDependency */,
+			);
+			name = DrunkardsWalkTests;
+			productName = DrunkardsWalkTests;
+			productReference = 42CDDA3D19BA69950032B533 /* DrunkardsWalkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42CDDA2019BA69950032B533 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = CCA;
+				TargetAttributes = {
+					42CDDA2719BA69950032B533 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					42CDDA3C19BA69950032B533 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 42CDDA2719BA69950032B533;
+					};
+				};
+			};
+			buildConfigurationList = 42CDDA2319BA69950032B533 /* Build configuration list for PBXProject "DrunkardsWalk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42CDDA1F19BA69950032B533;
+			productRefGroup = 42CDDA2919BA69950032B533 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42CDDA2719BA69950032B533 /* DrunkardsWalk */,
+				42CDDA3C19BA69950032B533 /* DrunkardsWalkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42CDDA2619BA69950032B533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
+				252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */,
+				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
+				252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */,
+				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,
+				42CDDA3819BA69950032B533 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42CDDA3B19BA69950032B533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42CDDA2419BA69950032B533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
+				4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */,
+				42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */,
+				4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */,
+				42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42CDDA3919BA69950032B533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42CDDA4419BA69950032B533 /* DrunkardsWalkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42CDDA3F19BA69950032B533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42CDDA2719BA69950032B533 /* DrunkardsWalk */;
+			targetProxy = 42CDDA3E19BA69950032B533 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42CDDA3419BA69950032B533 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42CDDA3519BA69950032B533 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		42CDDA4519BA69950032B533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		42CDDA4619BA69950032B533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		42CDDA4819BA69950032B533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = DrunkardsWalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		42CDDA4919BA69950032B533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = DrunkardsWalk/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		42CDDA4B19BA69950032B533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DrunkardsWalkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrunkardsWalk.app/DrunkardsWalk";
+			};
+			name = Debug;
+		};
+		42CDDA4C19BA69950032B533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = DrunkardsWalkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrunkardsWalk.app/DrunkardsWalk";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42CDDA2319BA69950032B533 /* Build configuration list for PBXProject "DrunkardsWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42CDDA4519BA69950032B533 /* Debug */,
+				42CDDA4619BA69950032B533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42CDDA4719BA69950032B533 /* Build configuration list for PBXNativeTarget "DrunkardsWalk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42CDDA4819BA69950032B533 /* Debug */,
+				42CDDA4919BA69950032B533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42CDDA4A19BA69950032B533 /* Build configuration list for PBXNativeTarget "DrunkardsWalkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42CDDA4B19BA69950032B533 /* Debug */,
+				42CDDA4C19BA69950032B533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				42CDDA3019BA69950032B533 /* DrunkardsWalk.xcdatamodel */,
+			);
+			currentVersion = 42CDDA3019BA69950032B533 /* DrunkardsWalk.xcdatamodel */;
+			path = DrunkardsWalk.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 42CDDA2019BA69950032B533 /* Project object */;
+}
