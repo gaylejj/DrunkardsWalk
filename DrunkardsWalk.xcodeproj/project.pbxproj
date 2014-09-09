@@ -16,6 +16,7 @@
 		25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280119BE7198007FBE80 /* humanRightFoot18px.png */; };
 		3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */; };
 		4233548619BE16CE009C34D9 /* RandomWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4233548519BE16CE009C34D9 /* RandomWalk.swift */; };
+		38D52EA719BFA79600A53C75 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D52EA619BFA79600A53C75 /* NotificationController.swift */; };
 		42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2D19BA69950032B533 /* AppDelegate.swift */; };
 		42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */; };
 		42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA3219BA69950032B533 /* MapViewController.swift */; };
@@ -46,6 +47,7 @@
 		25C5280119BE7198007FBE80 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
 		3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitNotifications.swift; sourceTree = "<group>"; };
 		4233548519BE16CE009C34D9 /* RandomWalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomWalk.swift; sourceTree = "<group>"; };
+		38D52EA619BFA79600A53C75 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		42CDDA2819BA69950032B533 /* DrunkardsWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrunkardsWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDDA2C19BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDDA2D19BA69950032B533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */,
 				3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */,
 				25C527FD19BE70BF007FBE80 /* WalkOverlayViewController.swift */,
+				38D52EA619BFA79600A53C75 /* NotificationController.swift */,
 			);
 			path = DrunkardsWalk;
 			sourceTree = "<group>";
@@ -218,6 +221,14 @@
 				TargetAttributes = {
 					42CDDA2719BA69950032B533 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					42CDDA3C19BA69950032B533 = {
 						CreatedOnToolsVersion = 6.0;
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38D52EA719BFA79600A53C75 /* NotificationController.swift in Sources */,
 				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
 				3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */,
 				4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */,
