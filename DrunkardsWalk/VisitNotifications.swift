@@ -11,7 +11,12 @@ import MapKit
 import CoreLocation
 
 //Develop a class for the notifications themselves and also an extension to the MapEngine.
+/*
+Sorry if this looks pretty bad, this is where I've been developing 3 different parts of the project.
+*/
+
 class VisitNotifications: NSObject, CLLocationManagerDelegate {
+    var appDelegate : AppDelegate
     var runName : String
     var locations : [CLLocation]?
     
@@ -20,6 +25,7 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
     init(name runCalled: String){
         self.runName = runCalled
         self.fakeRegionManager = CLLocationManager()
+        self.appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
 
     }
     
@@ -39,7 +45,7 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
     /*
     This method is called by the MapSearchEngine's delegate searchResults method.
     */
-    class func generateNotifications(searchResult: [MKMapItem]) {
+    func generateNotifications(searchResult: [MKMapItem]) {
         
         for mapItem in searchResult {
             if mapItem.name != "Current Location" {
@@ -52,46 +58,11 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
                 
                 //Monitor regions from here.
                 //self.fakeRegionManager.startMonitoringRegions(region)
+                
+                //With new architecture idea I am having for the notifications, this is where I'll send the region information to the appDelegate's notificationController.
+                self.appDelegate.notificationController.scheduleNotificationWithRegion(region)
             }
         }
-        
-        /*
-        Use the new Location notification objects rather than the mapItems, but grab the CL objects!
-        Move the notification code up into the mapItem loop to develop the regions.
-        */
-        
-        
-        //This notification stuff is going to be manipulated and changed about for a while.
-        //This will probably set to a notification that is based not on the region, but rather just called.
-        var notification = UILocalNotification()
-        notification.soundName = UILocalNotificationDefaultSoundName
-        //notification.applicationIconBadgeNumber
-        notification.timeZone = NSTimeZone.defaultTimeZone()
-        
-        //Testing with the time property and alertss
-        //var dateTime = NSDate.date()
-        var dateComponents = NSDateComponents()
-        dateComponents.second = 10
-        var dateTime = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: NSDate.date(), options: nil)
-        notification.fireDate = dateTime
-        
-        //Way to store data.
-        //notification.userInfo = [String:String]()
-        //notification.alertLaunchImage
-        notification.alertAction = "Alert!"
-        notification.alertBody = "Fired at \(dateTime)"
-        
-        //Regions related code
-//        notification.region
-        //notification.regionTriggersOnce = true
-        
-        //Send the notification to
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        
-        //Notes on what objects we will be dealing with.
-        //An array of location of MKMapItems -> CLLocation
-        //These CLLocations are going to be used to set the regions that we will be using.
-        
     }
     
     //MARK: - CLLocationManager

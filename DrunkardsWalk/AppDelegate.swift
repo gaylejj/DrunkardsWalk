@@ -13,16 +13,21 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    var notificationController = NotificationController()
     var alert : UIAlertController?
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
+        
+        //This is where I need to modify to allow notifications and usch happen.
         var currentSettings = application.currentUserNotificationSettings()
 
         var types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
         var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
+        
+        //Notification related stuff.
         
         return true
     }
