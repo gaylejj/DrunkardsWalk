@@ -23,12 +23,17 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
 
     }
     
-    func startMonitoringRegions() {
+    func startMonitoring() {
         if CLLocationManager.locationServicesEnabled() {
+            self.fakeRegionManager.startMonitoringVisits()
             
         } else {
             fakeRegionManager.requestAlwaysAuthorization()
         }
+    }
+    
+    func stopMonitoring() {
+        self.fakeRegionManager.stopMonitoringVisits()
     }
     
     /*
@@ -100,7 +105,12 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
     
     //MARK: Visit Monitoring
     func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!) {
-//        <#code#>
+        
+        //Grabs the departure date of the visit, this is useful for sending notifications the user.
+        visit.coordinate
+        visit.departureDate
+        
+        
     }
 }
 
