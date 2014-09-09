@@ -12,6 +12,7 @@ project.xcworkspace/
 *.xcworkspace
 *.xcuserstate
 xcuserdata
+*.storyboard
 
 # Build products
 build/
