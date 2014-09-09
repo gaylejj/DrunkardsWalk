@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app requires permissions to track your pub run.</string>
+	<string>This is also needed because we want to know when you leave a pub!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This isn&apos;t doing anything right now...</string>
+	<string>This is required so that your notifications can correctly track your crawl!</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

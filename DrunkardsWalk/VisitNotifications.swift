@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
+//Develop a class for the notifications themselves and also an extension to the MapEngine.
 class VisitNotifications: NSObject, CLLocationManagerDelegate {
     var runName : String
     var locations : [CLLocation]?
@@ -48,6 +49,12 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
                 //self.fakeRegionManager.startMonitoringRegions(region)
             }
         }
+        
+        /*
+        Use the new Location notification objects rather than the mapItems, but grab the CL objects!
+        Move the notification code up into the mapItem loop to develop the regions.
+        */
+        
         
         //This notification stuff is going to be manipulated and changed about for a while.
         //This will probably set to a notification that is based not on the region, but rather just called.

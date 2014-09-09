@@ -61,8 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     //UIApplicationOpenSettingsURLString
-    //TODO: Notification Settings.
     
+    
+    //MARK: - Notifications
+    //TODO: Notification Settings.
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         
         var currentSettings = application.currentUserNotificationSettings()
@@ -74,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    //MARK: - LocalNotifications
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         println("Received")
         
