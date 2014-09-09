@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //This is where I need to modify to allow notifications and usch happen.
         var currentSettings = application.currentUserNotificationSettings()
 
-        var types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        var types = UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge
         var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
         application.registerUserNotificationSettings(settings)
         

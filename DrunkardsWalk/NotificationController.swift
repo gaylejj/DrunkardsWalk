@@ -63,7 +63,7 @@ class NotificationController {
         
         //Requires UIUserNotificationTypes... so maybe port this to appDelegate?
         
-        //Samples:
+        //Sample
         var acceptAction = UIMutableUserNotificationAction()
         acceptAction.title = "Accept"
         acceptAction.identifier = "ACCEPT_ID"
@@ -84,6 +84,24 @@ class NotificationController {
         registeredActions.setActions([acceptAction, trashAction, replyAction], forContext: UIUserNotificationActionContext.Default)
         registeredActions.setActions([acceptAction, replyAction], forContext: UIUserNotificationActionContext.Minimal)
         
+        
+        
+        //Uber notification:
+        var callAction = UIMutableUserNotificationAction()
+        callAction.title = "Call Uber"
+        callAction.identifier = "UBER_CALL_ID"
+        callAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        
+        var finalDestinationNotification = UIMutableUserNotificationCategory()
+        finalDestinationNotification.identifier = "Uber_Category"
+        finalDestinationNotification.setActions([callAction, trashAction], forContext: UIUserNotificationActionContext.Default)
+        finalDestinationNotification.setActions([], forContext: UIUserNotificationActionContext.Minimal)
+        
+        
+        
+        //This should be the same no matter what:
+
         //
         var types = UIUserNotificationType.Alert | UIUserNotificationType.Sound
         //
@@ -92,11 +110,6 @@ class NotificationController {
         
         var settings = UIUserNotificationSettings(forTypes: types, categories: categories)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        
-        //Template to use a registered type of notification:
-        var notification = UILocalNotification()
-        notification.category = "Invite_Category"
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
         /*
         Handle with:
