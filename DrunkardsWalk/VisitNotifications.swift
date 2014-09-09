@@ -82,6 +82,7 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
         notification.alertBody = "Fired at \(dateTime)"
         
         //Regions related code
+//        notification.region
         //notification.regionTriggersOnce = true
         
         //Send the notification to
@@ -109,6 +110,60 @@ class VisitNotifications: NSObject, CLLocationManagerDelegate {
         //Grabs the departure date of the visit, this is useful for sending notifications the user.
         visit.coordinate
         visit.departureDate
+        
+    }
+    
+    //MARK: - Notification Actions
+    func setupNotificationActions() {
+        
+        //Requires UIUserNotificationTypes... so maybe port this to appDelegate?
+        
+        //Samples:
+        var acceptAction = UIMutableUserNotificationAction()
+        acceptAction.title = "Accept"
+        acceptAction.identifier = "ACCEPT_ID"
+        acceptAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        var trashAction = UIMutableUserNotificationAction()
+        trashAction.title = "Trash"
+        trashAction.identifier = "TRASH_ID"
+        trashAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        var replyAction = UIMutableUserNotificationAction()
+        replyAction.title = "Reply"
+        replyAction.identifier = "REPLY_ID"
+        replyAction.activationMode = UIUserNotificationActivationMode.Foreground
+        
+        var registeredActions = UIMutableUserNotificationCategory()
+        registeredActions.identifier = "Invite_Category"
+        registeredActions.setActions([acceptAction, trashAction, replyAction], forContext: UIUserNotificationActionContext.Default)
+        registeredActions.setActions([acceptAction, replyAction], forContext: UIUserNotificationActionContext.Minimal)
+        
+        
+        //
+        var types = UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        //
+        
+        var categories = NSSet(objects: registeredActions)
+        
+        var settings = UIUserNotificationSettings(forTypes: types, categories: categories)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
+        //Template to use a registered type of notification:
+        var notification = UILocalNotification()
+        notification.category = "Invite_Category"
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        /*
+        Handle with:
+            optional func application(_ application: UIApplication,
+            handleActionWithIdentifier identifier: String?,
+            forLocalNotification notification: UILocalNotification,
+            completionHandler completionHandler: () -> Void)
+        
+            Within this we will need to use : [self handleAcceptActionWithNotification:notification];
+        
+        */
         
         
     }

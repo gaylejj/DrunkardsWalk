@@ -90,6 +90,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window!.rootViewController.presentViewController(self.alert, animated: true, completion: nil)
         
     }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        completionHandler()
+    }
 
     // MARK: - Core Data stack
 
