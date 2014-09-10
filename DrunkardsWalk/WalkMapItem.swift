@@ -18,4 +18,12 @@ class WalkMapItem {
     init(mapItem : MKMapItem) {
         self.mapItem = mapItem
     }
+    
+    func getCurrentRouteLocation() -> CLLocationCoordinate2D {
+        if self.walkRoute.count > 0 {
+            return self.walkRoute.last!
+        } else {
+            return self.mapItem.placemark.location.coordinate
+        }
+    }
 }
