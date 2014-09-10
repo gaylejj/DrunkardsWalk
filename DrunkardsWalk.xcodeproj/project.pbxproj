@@ -15,8 +15,9 @@
 		25C5280219BE7198007FBE80 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */; };
 		25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280119BE7198007FBE80 /* humanRightFoot18px.png */; };
 		3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */; };
-		4233548619BE16CE009C34D9 /* RandomWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4233548519BE16CE009C34D9 /* RandomWalk.swift */; };
+		38B94E6719C01063001EE50D /* icomoon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38B94E6619C0104E001EE50D /* icomoon.ttf */; };
 		38D52EA719BFA79600A53C75 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D52EA619BFA79600A53C75 /* NotificationController.swift */; };
+		4233548619BE16CE009C34D9 /* RandomWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4233548519BE16CE009C34D9 /* RandomWalk.swift */; };
 		42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2D19BA69950032B533 /* AppDelegate.swift */; };
 		42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */; };
 		42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA3219BA69950032B533 /* MapViewController.swift */; };
@@ -46,8 +47,9 @@
 		25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
 		25C5280119BE7198007FBE80 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
 		3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitNotifications.swift; sourceTree = "<group>"; };
-		4233548519BE16CE009C34D9 /* RandomWalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomWalk.swift; sourceTree = "<group>"; };
+		38B94E6619C0104E001EE50D /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
 		38D52EA619BFA79600A53C75 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		4233548519BE16CE009C34D9 /* RandomWalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomWalk.swift; sourceTree = "<group>"; };
 		42CDDA2819BA69950032B533 /* DrunkardsWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrunkardsWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDDA2C19BA69950032B533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDDA2D19BA69950032B533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,14 @@
 			path = "Straight Feet";
 			sourceTree = "<group>";
 		};
+		38B94E6419C00EE5001EE50D /* Font Packs */ = {
+			isa = PBXGroup;
+			children = (
+				38B94E6619C0104E001EE50D /* icomoon.ttf */,
+			);
+			name = "Font Packs";
+			sourceTree = "<group>";
+		};
 		42CDDA1F19BA69950032B533 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		42CDDA2B19BA69950032B533 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				38B94E6419C00EE5001EE50D /* Font Packs */,
 				252C0B5B19BA7096007A3879 /* Drunkard's Walk Digital Assets */,
 				42CDDA2C19BA69950032B533 /* Info.plist */,
 			);
@@ -263,6 +274,7 @@
 				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
 				25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */,
 				252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */,
+				38B94E6719C01063001EE50D /* icomoon.ttf in Resources */,
 				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
 				252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */,
 				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,

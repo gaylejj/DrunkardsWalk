@@ -80,7 +80,7 @@ class NotificationController {
         replyAction.activationMode = UIUserNotificationActivationMode.Foreground
         
         var registeredActions = UIMutableUserNotificationCategory()
-        registeredActions.identifier = "Invite_Category"
+        registeredActions.identifier = "INVITE_Category"
         registeredActions.setActions([acceptAction, trashAction, replyAction], forContext: UIUserNotificationActionContext.Default)
         registeredActions.setActions([acceptAction, replyAction], forContext: UIUserNotificationActionContext.Minimal)
         
@@ -94,14 +94,14 @@ class NotificationController {
         
         
         var finalDestinationNotification = UIMutableUserNotificationCategory()
-        finalDestinationNotification.identifier = "Uber_Category"
+        finalDestinationNotification.identifier = "UBER_Category"
         finalDestinationNotification.setActions([callAction, trashAction], forContext: UIUserNotificationActionContext.Default)
         finalDestinationNotification.setActions([], forContext: UIUserNotificationActionContext.Minimal)
         
         
         
         //This should be the same no matter what:
-
+        
         //
         var types = UIUserNotificationType.Alert | UIUserNotificationType.Sound
         //

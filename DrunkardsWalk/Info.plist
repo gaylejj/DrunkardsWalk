@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>icomoon.ttf</string>
+	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This is also needed because we want to know when you leave a pub!</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
