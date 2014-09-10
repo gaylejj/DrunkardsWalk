@@ -15,19 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var notificationController = NotificationController()
     var alert : UIAlertController?
-    
+
+//MARK: -
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
-        
-        //This is where I need to modify to allow notifications and usch happen.
-        var currentSettings = application.currentUserNotificationSettings()
-
-        var types = UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge
+        //This looks at the current settings and compares them to what we want. If they are not the same, this'll register the settings and ask to notifications for the app.
+        let currentSettings = application.currentUserNotificationSettings()
+        let types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
         var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        application.registerUserNotificationSettings(settings)
         
-        //Notification related stuff.
+        if currentSettings != settings {
+            application.registerUserNotificationSettings(settings)
+
+        }
         
         return true
     }
@@ -59,28 +60,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: - URL
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
         //This will be used to open up a pub crawl from a NSURL string (we can use this to our advantage by hashing states to persist them or something.
-        
-        //NOTE: As of iOS8 Use this to open up settings: NSURL(string: UIApplicationOpenSettingsURLString)
-        
         return true
     }
     
-    //UIApplicationOpenSettingsURLString
-    
-    
     //MARK: - Notifications
-    //TODO: Notification Settings.
+    
+    //This checks changes to the settings, including the denial, this'll then prompt with an action to allow settings desired.
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         
-        var currentSettings = application.currentUserNotificationSettings()
+        let types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
+        let desiredSettings = UIUserNotificationSettings(forTypes: types, categories: nil)
         
-        if notificationSettings != currentSettings {
+        if notificationSettings != desiredSettings {
+            let askChange = UIAlertController(title: "Settings Changed", message: "The settings you have selected do not match the reccomended settings, are you sure you want to do that?", preferredStyle: UIAlertControllerStyle.Alert)
+
+            /*
+            It might be better to use this to open it to settings?
+            NOTE: As of iOS8 Use this to open up settings: NSURL(string: UIApplicationOpenSettingsURLString)
+            UIApplicationOpenSettingsURLString
+            */
             
-        } else {
+            let change = UIAlertAction(title: "Reccomended", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+                application.registerUserNotificationSettings(desiredSettings)
+            })
+            let okay = UIAlertAction(title: "Don't Care", style: UIAlertActionStyle.Default, handler: nil)
             
+            askChange.addAction(change)
+            askChange.addAction(okay)
+            
+            self.window?.rootViewController?.presentViewController(askChange, animated: true, completion: nil)
         }
     }
     
+    //This is the functionality for the notification when the app is open.
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         println("Received")
         
@@ -91,18 +103,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 self.alert?.addAction(okay)
             }
+            self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
         }
-        self.window!.rootViewController!.presentViewController(self.alert!, animated: true, completion: nil)
-        
     }
     
+    //This is intended for notifications that are local, but the app is not open.
+    //TODO: Handling notification actions.
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        //I'd want to do the enum and switch statement, but that apparently does not work with enums. I'll work on it later. For now, constants and if-else will work.
+        
+        if let actionNamed = identifier {
+            if let action = kNotification.Action.fromRaw(identifier!) {
+                switch action {
+                case .Check:
+                    println()
+                case .Cancel:
+                    println()
+                case .RateUp:
+                    println()
+                case .RateDown:
+                    println()
+                case .CallUber:
+                    println()
+                }
+            }
+        }
         
         completionHandler()
     }
 
     // MARK: - Core Data stack
-
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.collinatherton.DrunkardsWalk" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
