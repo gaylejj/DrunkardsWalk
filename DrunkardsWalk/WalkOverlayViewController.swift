@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AnimationEngineDelegate {
+    func pinHasFinishedAnimation()
+}
+
 class WalkOverlayViewController: UIViewController {
     
     var timer : NSTimer!
@@ -19,6 +23,8 @@ class WalkOverlayViewController: UIViewController {
     
     var rotation : CGAffineTransform!
     var quadrant : Int!
+
+    var delegate : AnimationEngineDelegate?
 
 
     override func viewDidLoad() {
@@ -56,6 +62,8 @@ class WalkOverlayViewController: UIViewController {
                     var pointPlusOne = self.points[self.numberOfPoints + 1]
                     self.animatePathBetweenTwoPoints(point, destination: pointPlusOne)
                     
+                } else {
+                    self.delegate?.pinHasFinishedAnimation()
                 }
                 
         }
