@@ -19,6 +19,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var locationManager : CLLocationManager!
     var activity : UIActivityIndicatorView?
     
+    var animationEngine : AnimationEngine!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -116,7 +118,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
         //TODO: Checks for results and expands region radius if necessary
-        self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 3000, query: "bar")
+        self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
         self.activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         self.activity!.startAnimating()
         self.activity!.center = self.mapView.center
@@ -129,12 +131,47 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         //TODO: Send info to Random Walk Engine
         self.activity!.stopAnimating()
+        self.activity!.removeFromSuperview()
         
-        for i in 0..<items.count {
-            println(items[i].name)
+//        for i in 0..<items.count {
+//            println(items[i].name)
+//        }
+        
+        var points = self.convertMapItemToCLLocation(items)
+        
+        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            self.setUpOverlayView()
+            self.animationEngine.points = points
+            self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
         }
 
+
         
+    }
+    
+    func setUpOverlayView() {
+        var overlay = UIView(frame: CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y, self.mapView.frame.width, self.mapView.frame.height))
+        overlay.bounds = CGRect(x: self.mapView.frame.origin.x, y: self.mapView.frame.origin.y, width: self.mapView.frame.width, height: self.mapView.frame.height)
+        overlay.clipsToBounds = true
+        
+        self.animationEngine = AnimationEngine(view: overlay)
+        
+        self.view.addSubview(self.animationEngine.view)
+    }
+    
+    func convertMapItemToCLLocation(mapItems: [MKMapItem]) -> [CGPoint] {
+        var cgPoints = [CGPoint]()
+        for i in 0..<mapItems.count {
+            var item = mapItems[i] as MKMapItem
+            var coord = item.placemark.coordinate
+            var point = self.convertCLLocationCoordinate(coord)
+            cgPoints.append(point)
+        }
+        return cgPoints
+    }
+        
+    func convertCLLocationCoordinate(coordinate: CLLocationCoordinate2D) -> CGPoint {
+        return self.mapView.convertCoordinate(coordinate, toPointToView: self.view)
     }
     
     override func didReceiveMemoryWarning() {

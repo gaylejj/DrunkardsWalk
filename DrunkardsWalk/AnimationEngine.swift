@@ -12,7 +12,7 @@ protocol AnimationEngineDelegate {
     func pinHasFinishedAnimation()
 }
 
-class AnimationEngine: UIViewController {
+class AnimationEngine: NSObject {
     
     var timer : NSTimer!
     var imageView : UIImageView!
@@ -26,13 +26,18 @@ class AnimationEngine: UIViewController {
 
     var delegate : AnimationEngineDelegate?
 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var view : UIView!
+    
+    init(view: UIView) {
+        self.view = view
     }
     
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        self.animatePathBetweenTwoPoints(self.points[0], destination: self.points[1])
+//        // Do any additional setup after loading the view.
+//    }
+//    
     func animatePathBetweenTwoPoints(source: CGPoint, destination: CGPoint) {
         let leftFoot = UIImage(named: "humanLeftFoot18pxStraight")
         self.imageView = UIImageView()
@@ -151,7 +156,7 @@ class AnimationEngine: UIViewController {
         } else if point1.x < point2.x && point1.y < point2.y {
             var angleXY = atan2(-dx, -dy)
             var degreeAngleXY = angleXY * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(degreeAngleXY)
+            rotationTransform = CGAffineTransformMakeRotation(-degreeAngleXY)
             return (rotationTransform, 1)
             
         } else if point1.x > point2.x && point1.y < point2.y {
@@ -163,15 +168,15 @@ class AnimationEngine: UIViewController {
         } else {
             var angleX_Y = atan2(-dx, dy)
             var degreeAngleX_Y = angleX_Y * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(degreeAngleX_Y)
+            rotationTransform = CGAffineTransformMakeRotation(-degreeAngleX_Y)
             return (rotationTransform, 2)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
 
     /*
