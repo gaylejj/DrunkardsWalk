@@ -12,7 +12,7 @@ protocol AnimationEngineDelegate {
     func pinHasFinishedAnimation()
 }
 
-class WalkOverlayViewController: UIViewController {
+class AnimationEngine: UIViewController {
     
     var timer : NSTimer!
     var imageView : UIImageView!

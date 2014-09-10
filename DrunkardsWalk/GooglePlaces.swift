@@ -22,7 +22,7 @@ import MapKit
 
 protocol GooglePlacesDelegate {
     
-    func googlePlacesSearchResult([MKMapItem])
+    func googlePlacesSearchResult(items: [MKMapItem])
     
 }
 
