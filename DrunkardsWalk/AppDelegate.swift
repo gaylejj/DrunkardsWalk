@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.alert?.addAction(okay)
             }
         }
-        self.window!.rootViewController.presentViewController(self.alert, animated: true, completion: nil)
+        self.window!.rootViewController!.presentViewController(self.alert!, animated: true, completion: nil)
         
     }
     
@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("DrunkardsWalk", withExtension: "momd")
-        return NSManagedObjectModel(contentsOfURL: modelURL)
+        return NSManagedObjectModel(contentsOfURL: modelURL!)
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
