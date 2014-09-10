@@ -60,10 +60,7 @@ class NotificationController {
     
     //MARK: - Notification Actions
     func setupNotificationActions() {
-        
-        //Requires UIUserNotificationTypes... so maybe port this to appDelegate?
-        
-        //Sample
+        //Sample notification:
         var acceptAction = UIMutableUserNotificationAction()
         acceptAction.title = "Accept"
         acceptAction.identifier = "ACCEPT_ID"
@@ -85,19 +82,51 @@ class NotificationController {
         registeredActions.setActions([acceptAction, replyAction], forContext: UIUserNotificationActionContext.Minimal)
         
         
+        //Unicode scalars - I need to see if they are of the icomoon font pack.
+        
+        
+        //Base notification:
+        let checkAction = UIMutableUserNotificationAction()
+        checkAction.title = "\u{e606}"
+        checkAction.identifier = "FINISH_ID"
+        checkAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        let cancelAction = UIMutableUserNotificationAction()
+        cancelAction.title = "\u{e604}"
+        cancelAction.identifier = "CANCEL_ID"
+        cancelAction.destructive = true
+        cancelAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        let happyAction = UIMutableUserNotificationAction()
+        happyAction.title = "\u{e602}"
+        happyAction.identifier = "HAPPY_ID"
+        happyAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        let madAction = UIMutableUserNotificationAction()
+        madAction.title = "\u{e603}"
+        madAction.identifier = "MAD_ID"
+        madAction.activationMode = UIUserNotificationActivationMode.Background
+        
+        var pubCrawlCategory = UIMutableUserNotificationCategory()
+        pubCrawlCategory.identifier = "PUB_Category"
+        pubCrawlCategory.setActions([checkAction, cancelAction], forContext: UIUserNotificationActionContext.Minimal)
+        pubCrawlCategory.setActions([checkAction, happyAction, madAction, cancelAction], forContext: UIUserNotificationActionContext.Default)
+        
         
         //Uber notification:
         var callAction = UIMutableUserNotificationAction()
-        callAction.title = "Call Uber"
+        callAction.title = "\u{600} Uber"
         callAction.identifier = "UBER_CALL_ID"
         callAction.activationMode = UIUserNotificationActivationMode.Background
         
         
         var finalDestinationNotification = UIMutableUserNotificationCategory()
         finalDestinationNotification.identifier = "UBER_Category"
-        finalDestinationNotification.setActions([callAction, trashAction], forContext: UIUserNotificationActionContext.Default)
-        finalDestinationNotification.setActions([], forContext: UIUserNotificationActionContext.Minimal)
+        finalDestinationNotification.setActions([callAction, cancelAction], forContext: UIUserNotificationActionContext.Default)
+        finalDestinationNotification.setActions([callAction, cancelAction], forContext: UIUserNotificationActionContext.Minimal)
         
+        
+        //Finesse a bit of logic to help the use not spend money on getting to a loction that they can easily walk to. We'll have to figure out a good place to get that working.
         
         
         //This should be the same no matter what:
@@ -106,6 +135,7 @@ class NotificationController {
         var types = UIUserNotificationType.Alert | UIUserNotificationType.Sound
         //
         
+        //TODO: Stick UBER and the normal one in here. The registered sample one is perfect for prelim testing.
         var categories = NSSet(objects: registeredActions)
         
         var settings = UIUserNotificationSettings(forTypes: types, categories: categories)
@@ -123,6 +153,22 @@ class NotificationController {
         */
         
         
+    }
+    
+    //I'm keeping this here is people are interested in finding their custom font names later on. In their projects.
+    func lookAtFontFamilies() {
+        for fontFamily in UIFont.familyNames() {
+            if let family = fontFamily as? String {
+                println("Family: \(family)")
+                
+                for fontName in UIFont.fontNamesForFamilyName(family) {
+                    if let name = fontName as? String {
+                        println("\tNamed: \(name)")
+                        
+                    }
+                }
+            }
+        }
     }
     
 }
