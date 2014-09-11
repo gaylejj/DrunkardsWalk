@@ -12,7 +12,7 @@ protocol AnimationEngineDelegate {
     func pinHasFinishedAnimation()
 }
 
-class AnimationEngine: UIViewController {
+class AnimationEngine: NSObject {
     
     var timer : NSTimer!
     var imageView : UIImageView!
@@ -26,11 +26,11 @@ class AnimationEngine: UIViewController {
 
     var delegate : AnimationEngineDelegate?
 
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var view : UIView!
+    
+    init(view: UIView, points: [CGPoint]) {
+        self.view = view
+        self.points = points
     }
     
     func animatePathBetweenTwoPoints(source: CGPoint, destination: CGPoint) {
@@ -145,19 +145,19 @@ class AnimationEngine: UIViewController {
         if point1.x > point2.x && point1.y > point2.y {
             var angle_X_Y = atan2(dx, dy)
             var degreeAngle_X_Y = angle_X_Y * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(-degreeAngle_X_Y)
+            rotationTransform = CGAffineTransformMakeRotation(degreeAngle_X_Y)
             return (rotationTransform, 4)
             
         } else if point1.x < point2.x && point1.y < point2.y {
             var angleXY = atan2(-dx, -dy)
             var degreeAngleXY = angleXY * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(degreeAngleXY)
+            rotationTransform = CGAffineTransformMakeRotation(-degreeAngleXY)
             return (rotationTransform, 1)
             
         } else if point1.x > point2.x && point1.y < point2.y {
             var angle_XY = atan2(dx, -dy)
             var degreeAngle_XY = angle_XY * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(-degreeAngle_XY)
+            rotationTransform = CGAffineTransformMakeRotation(degreeAngle_XY)
             return (rotationTransform, 3)
             
         } else {
@@ -167,11 +167,11 @@ class AnimationEngine: UIViewController {
             return (rotationTransform, 2)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
 
     /*
