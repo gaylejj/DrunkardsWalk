@@ -123,6 +123,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.activity!.startAnimating()
         self.activity!.center = self.mapView.center
         self.mapView.addSubview(self.activity!)
+        self.setRegion()
+
     }
     
     //MARK: GooglePlacesDelegate
@@ -136,12 +138,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 //        for i in 0..<items.count {
 //            println(items[i].name)
 //        }
-        
-        var points = self.convertMapItemToCLLocation(items)
+
         
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            self.setUpOverlayView()
-            self.animationEngine.points = points
+            var points = self.convertMapItemToCLLocation(items)
+            self.setUpOverlayView(points)
+//            self.animationEngine.points = points
             self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
         }
 
@@ -149,12 +151,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
-    func setUpOverlayView() {
+    func setUpOverlayView(points: [CGPoint]) {
         var overlay = UIView(frame: CGRectMake(self.mapView.frame.origin.x, self.mapView.frame.origin.y, self.mapView.frame.width, self.mapView.frame.height))
         overlay.bounds = CGRect(x: self.mapView.frame.origin.x, y: self.mapView.frame.origin.y, width: self.mapView.frame.width, height: self.mapView.frame.height)
         overlay.clipsToBounds = true
         
-        self.animationEngine = AnimationEngine(view: overlay)
+        self.animationEngine = AnimationEngine(view: overlay, points: points)
         
         self.view.addSubview(self.animationEngine.view)
     }
@@ -172,6 +174,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     func convertCLLocationCoordinate(coordinate: CLLocationCoordinate2D) -> CGPoint {
         return self.mapView.convertCoordinate(coordinate, toPointToView: self.view)
+    }
+    
+    func setRegion() {
+        let lat = self.mapView.userLocation.coordinate.latitude
+        let long = self.mapView.userLocation.coordinate.longitude
+        
+        let latDelta = 0.03
+        let longDelta = 0.03
+        let span = MKCoordinateSpanMake(latDelta, longDelta)
+        
+        let location = CLLocationCoordinate2DMake(lat, long)
+        let region = MKCoordinateRegionMake(location, span)
+        
+        self.mapView.setRegion(region, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

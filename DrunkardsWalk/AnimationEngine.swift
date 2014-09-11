@@ -28,8 +28,9 @@ class AnimationEngine: NSObject {
 
     var view : UIView!
     
-    init(view: UIView) {
+    init(view: UIView, points: [CGPoint]) {
         self.view = view
+        self.points = points
     }
     
 //    override func viewDidLoad() {
@@ -156,7 +157,7 @@ class AnimationEngine: NSObject {
         } else if point1.x < point2.x && point1.y < point2.y {
             var angleXY = atan2(-dx, -dy)
             var degreeAngleXY = angleXY * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(-degreeAngleXY)
+            rotationTransform = CGAffineTransformMakeRotation(degreeAngleXY)
             return (rotationTransform, 1)
             
         } else if point1.x > point2.x && point1.y < point2.y {
@@ -168,7 +169,7 @@ class AnimationEngine: NSObject {
         } else {
             var angleX_Y = atan2(-dx, dy)
             var degreeAngleX_Y = angleX_Y * CGFloat(piMultiplier)
-            rotationTransform = CGAffineTransformMakeRotation(-degreeAngleX_Y)
+            rotationTransform = CGAffineTransformMakeRotation(degreeAngleX_Y)
             return (rotationTransform, 2)
         }
     }
