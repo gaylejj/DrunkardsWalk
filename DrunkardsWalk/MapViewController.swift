@@ -23,6 +23,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var difference : CGFloat = 0.0
     
+    var pubCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,7 +113,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func stepperValueChanged(sender: UIStepper) {
         
         var value = sender.value
-        
+        self.pubCount = Int(value)
         var nf = NSNumberFormatter()
         
         self.pubLabel.text = "\(nf.stringFromNumber(value)) Pubs"
