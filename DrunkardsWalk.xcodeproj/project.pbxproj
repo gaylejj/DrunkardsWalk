@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5D19BA7096007A3879 /* humanLeftFoot.png */; };
-		252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */; };
 		252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5F19BA7096007A3879 /* humanRightFoot.png */; };
-		252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B6019BA7096007A3879 /* humanRightFoot18px.png */; };
 		2539AF6719C0EACF00A128F1 /* google.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2539AF6619C0EACF00A128F1 /* google.plist */; };
 		25C527FE19BE70BF007FBE80 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */; };
 		25C5280219BE7198007FBE80 /* humanLeftFoot18pxStraight.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280019BE7198007FBE80 /* humanLeftFoot18pxStraight.png */; };
@@ -40,9 +38,7 @@
 
 /* Begin PBXFileReference section */
 		252C0B5D19BA7096007A3879 /* humanLeftFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot.png; sourceTree = "<group>"; };
-		252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
 		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
-		252C0B6019BA7096007A3879 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
 		2539AF6619C0EACF00A128F1 /* google.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = google.plist; sourceTree = "<group>"; };
 		25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		25C5280019BE7198007FBE80 /* humanLeftFoot18pxStraight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18pxStraight.png; sourceTree = "<group>"; };
@@ -96,9 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				252C0B5D19BA7096007A3879 /* humanLeftFoot.png */,
-				252C0B5E19BA7096007A3879 /* humanLeftFoot18px.png */,
 				252C0B5F19BA7096007A3879 /* humanRightFoot.png */,
-				252C0B6019BA7096007A3879 /* humanRightFoot18px.png */,
 			);
 			path = Feet;
 			sourceTree = "<group>";
@@ -275,10 +269,8 @@
 			files = (
 				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
 				25C5280319BE7198007FBE80 /* humanRightFoot18pxStraight.png in Resources */,
-				252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */,
 				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
 				2539AF6719C0EACF00A128F1 /* google.plist in Resources */,
-				252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */,
 				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,
 				25C5280219BE7198007FBE80 /* humanLeftFoot18pxStraight.png in Resources */,
 				42CDDA3819BA69950032B533 /* Images.xcassets in Resources */,
