@@ -110,8 +110,8 @@
 		25C527FF19BE7198007FBE80 /* Straight Feet */ = {
 			isa = PBXGroup;
 			children = (
-				25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */,
-				25C5280119BE7198007FBE80 /* humanRightFoot18px.png */,
+				25C5280019BE7198007FBE80 /* humanLeftFoot18pxStraight.png */,
+				25C5280119BE7198007FBE80 /* humanRightFoot18pxStraight.png */,
 			);
 			path = "Straight Feet";
 			sourceTree = "<group>";
@@ -280,13 +280,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
-				25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */,
+				25C5280319BE7198007FBE80 /* humanRightFoot18pxStraight.png in Resources */,
 				252C0B6419BA7096007A3879 /* humanRightFoot18px.png in Resources */,
 				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
 				2539AF6719C0EACF00A128F1 /* google.plist in Resources */,
 				252C0B6219BA7096007A3879 /* humanLeftFoot18px.png in Resources */,
 				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,
-				25C5280219BE7198007FBE80 /* humanLeftFoot18px.png in Resources */,
+				25C5280219BE7198007FBE80 /* humanLeftFoot18pxStraight.png in Resources */,
 				42CDDA3819BA69950032B533 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
