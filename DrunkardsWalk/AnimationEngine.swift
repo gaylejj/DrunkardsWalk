@@ -36,7 +36,7 @@ class AnimationEngine: NSObject {
     }
     
     func animatePathBetweenTwoPoints(source: CGPoint, destination: CGPoint) {
-        let leftFoot = UIImage(named: "humanLeftFoot18pxStraight")
+        let leftFoot = UIImage(named: "humanLeftFoot18px")
         self.imageView = UIImageView()
         self.imageView.image = leftFoot
         self.imageView.frame = CGRectMake(source.x, source.y - self.difference, 10, 10)
@@ -89,7 +89,7 @@ class AnimationEngine: NSObject {
     }
     
     func addLeftFootImage(point: CGPoint) {
-        let leftFoot = UIImage(named: "humanLeftFoot18pxStraight")
+        let leftFoot = UIImage(named: "humanLeftFoot18px")
         let imageView = UIImageView(image: leftFoot)
         
         switch self.quadrant {
@@ -113,7 +113,7 @@ class AnimationEngine: NSObject {
     }
     
     func addRightFootImage(point: CGPoint) {
-        let rightFoot = UIImage(named: "humanRightFoot18pxStraight")
+        let rightFoot = UIImage(named: "humanRightFoot18px")
         let imageView = UIImageView(image: rightFoot)
         
         switch self.quadrant {
