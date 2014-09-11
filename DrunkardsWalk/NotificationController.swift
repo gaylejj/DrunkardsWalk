@@ -21,7 +21,28 @@ class NotificationController {
         self.setupNotificationActions()
     }
     
-//MARK: - Scheduling a Notification
+    
+    //MARK: - Scheduling a Notification
+    func generateNotifications(searchResult: [MKMapItem]) {
+        
+        for mapItem in searchResult {
+            if mapItem.name != "Current Location" {
+                var coordinate = mapItem.placemark.coordinate
+                var region = CLCircularRegion(circularRegionWithCenter: coordinate, radius: 25, identifier: "PubRegions")
+                
+                //This should present a notification to changes to the CLCircularRegion on exit.
+                region.notifyOnEntry = true //As of right now lets let this stay on.
+                region.notifyOnExit = true
+                
+                //Monitor regions from here.
+                //self.fakeRegionManager.startMonitoringRegions(region)
+                
+                //With new architecture idea I am having for the notifications, this is where I'll send the region information to the appDelegate's notificationController.
+                self.scheduleNotificationWithRegion(region)
+            }
+        }
+    }
+    
     func scheduleNotificationWithRegion(region : CLRegion) {
         
         /*
