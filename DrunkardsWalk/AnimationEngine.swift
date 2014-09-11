@@ -33,12 +33,6 @@ class AnimationEngine: NSObject {
         self.points = points
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        self.animatePathBetweenTwoPoints(self.points[0], destination: self.points[1])
-//        // Do any additional setup after loading the view.
-//    }
-//    
     func animatePathBetweenTwoPoints(source: CGPoint, destination: CGPoint) {
         let leftFoot = UIImage(named: "humanLeftFoot18pxStraight")
         self.imageView = UIImageView()

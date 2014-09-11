@@ -148,10 +148,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             points.insert(currentPoint, atIndex: 0)
             self.setUpOverlayView(points)
             self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
-        }
-
-
-        
+        }   
     }
     
     func setUpOverlayView(points: [CGPoint]) {
