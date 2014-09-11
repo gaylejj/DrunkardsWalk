@@ -16,7 +16,7 @@ class AnimationEngine: NSObject {
     
     var timer : NSTimer!
     var imageView : UIImageView!
-    var points = [CGPoint]()
+    var points : [CGPoint]
     var pointNumber = 0
     var numberOfPoints = 0
     var imageViewArray = [UIImageView]()
@@ -27,17 +27,19 @@ class AnimationEngine: NSObject {
     var delegate : AnimationEngineDelegate?
 
     var view : UIView!
+    var difference : CGFloat!
     
-    init(view: UIView, points: [CGPoint]) {
+    init(view: UIView, points: [CGPoint], difference: CGFloat) {
         self.view = view
         self.points = points
+        self.difference = difference
     }
     
     func animatePathBetweenTwoPoints(source: CGPoint, destination: CGPoint) {
         let leftFoot = UIImage(named: "humanLeftFoot18pxStraight")
         self.imageView = UIImageView()
         self.imageView.image = leftFoot
-        self.imageView.frame = CGRectMake(source.x, source.y - 60, 10, 10)
+        self.imageView.frame = CGRectMake(source.x, source.y - self.difference, 10, 10)
         self.imageViewArray.append(self.imageView)
         self.view.addSubview(self.imageView)
         
@@ -50,7 +52,7 @@ class AnimationEngine: NSObject {
     
     func viewAnimation(destination: CGPoint) {
         UIView.animateWithDuration(5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-            self.imageView.frame = CGRect(x: destination.x, y: destination.y - 60, width: self.imageView.frame.width, height: self.imageView.frame.height)
+            self.imageView.frame = CGRect(x: destination.x, y: destination.y - self.difference, width: self.imageView.frame.width, height: self.imageView.frame.height)
             self.imageView.hidden = true
             
             self.timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "getPoint", userInfo: nil, repeats: true)
