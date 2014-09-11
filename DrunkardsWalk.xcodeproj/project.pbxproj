@@ -11,8 +11,8 @@
 		252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5F19BA7096007A3879 /* humanRightFoot.png */; };
 		2539AF6719C0EACF00A128F1 /* google.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2539AF6619C0EACF00A128F1 /* google.plist */; };
 		25C527FE19BE70BF007FBE80 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */; };
-		25C5280219BE7198007FBE80 /* humanLeftFoot18pxStraight.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280019BE7198007FBE80 /* humanLeftFoot18pxStraight.png */; };
-		25C5280319BE7198007FBE80 /* humanRightFoot18pxStraight.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280119BE7198007FBE80 /* humanRightFoot18pxStraight.png */; };
+		25C5280219BE7198007FBE80 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */; };
+		25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280119BE7198007FBE80 /* humanRightFoot18px.png */; };
 		3871B0BB19BE2A7D00A2B179 /* VisitNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */; };
 		38D52EA719BFA79600A53C75 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D52EA619BFA79600A53C75 /* NotificationController.swift */; };
 		4233548619BE16CE009C34D9 /* RandomWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4233548519BE16CE009C34D9 /* RandomWalk.swift */; };
@@ -41,8 +41,8 @@
 		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
 		2539AF6619C0EACF00A128F1 /* google.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = google.plist; sourceTree = "<group>"; };
 		25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
-		25C5280019BE7198007FBE80 /* humanLeftFoot18pxStraight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18pxStraight.png; sourceTree = "<group>"; };
-		25C5280119BE7198007FBE80 /* humanRightFoot18pxStraight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18pxStraight.png; sourceTree = "<group>"; };
+		25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
+		25C5280119BE7198007FBE80 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
 		3871B0BA19BE2A7D00A2B179 /* VisitNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitNotifications.swift; sourceTree = "<group>"; };
 		38D52EA619BFA79600A53C75 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		38FEAECA19C0B8EB0077FCC6 /* icomoon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = icomoon.ttf; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 		25C527FF19BE7198007FBE80 /* Straight Feet */ = {
 			isa = PBXGroup;
 			children = (
-				25C5280019BE7198007FBE80 /* humanLeftFoot18pxStraight.png */,
-				25C5280119BE7198007FBE80 /* humanRightFoot18pxStraight.png */,
+				25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */,
+				25C5280119BE7198007FBE80 /* humanRightFoot18px.png */,
 			);
 			path = "Straight Feet";
 			sourceTree = "<group>";
@@ -268,11 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
-				25C5280319BE7198007FBE80 /* humanRightFoot18pxStraight.png in Resources */,
+				25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */,
 				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
 				2539AF6719C0EACF00A128F1 /* google.plist in Resources */,
 				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,
-				25C5280219BE7198007FBE80 /* humanLeftFoot18pxStraight.png in Resources */,
+				25C5280219BE7198007FBE80 /* humanLeftFoot18px.png in Resources */,
 				42CDDA3819BA69950032B533 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
