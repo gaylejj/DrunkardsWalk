@@ -8,20 +8,8 @@
 
 import Foundation
 import UIKit
+import MapKit
 import CoreLocation
-
-
-class LocationObject {
-    var name : String?
-    var location : CLLocationCoordinate2D
-    var next : LocationObject?
-    var intermediateWalks : [CLLocationCoordinate2D]?
-    
-    init(location : CLLocationCoordinate2D) {
-        self.location = location
-    }
-    
-}
 
 class RandomWalk {
     
@@ -31,50 +19,49 @@ class RandomWalk {
     var mapBinX = 0.002 // changes to make integer units of bins. Should be very close to walkBin
     var mapBinY = 0.002
     
-    func walkOverLocations(pubCount : Int, startingLocation : CLLocationCoordinate2D, locations : [CLLocationCoordinate2D], upperLeft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D) -> ([LocationObject]?, [CLLocationCoordinate2D]?){
+    func walkOverLocations(pubCount : Int, startingLocation : MKMapItem, locations : [MKMapItem], upperLeft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D) -> WalkMapItem? {
         
-        var locList : LocationObject
-        if let l = createLocationList(locations)? {
-            locList = l
+        var walkList : WalkMapItem
+        if let l = self.loadWalkList(locations)? {
+            walkList = l
         } else {
-            return (nil, nil)
+            return nil
         }
-        var grid_Y_X = createGrid(upperLeft, lowerRight: lowerRight, locationList: locList)
+        var grid_Y_X = createGrid(upperLeft, lowerRight: lowerRight, walkListItem: walkList)
         
         var count = 0
         
-        var walkRoute = [CLLocationCoordinate2D]()
-        var locationRoute = [LocationObject]()
-        
-        walkRoute.append(startingLocation)
-        var lastCoord = startingLocation
-        while(count < pubCount && walkRoute.count < self.maxWalk) {
+        var startingLocation = WalkMapItem(mapItem: startingLocation)
+        var currentLocation = startingLocation
+
+        var lastCoord = currentLocation.getCurrentRouteLocation()
+        while(count < pubCount && currentLocation.walkRoute.count < self.maxWalk) {
             var newCoord = newCoordinate(lastCoord)
+            
             //TODO: below, is reused code, which is present in the createGrid method
             // get the map bin that the location would exist in
             var X = Int(floor(newCoord.longitude / self.mapBinX))
             var Y = Int(floor(newCoord.latitude / self.mapBinY))
-            if let loc = grid_Y_X[Y][X] {
-                locationRoute.append(loc)
-                walkRoute.append(loc.location)
-                lastCoord = loc.location
-                grid_Y_X[Y][X] = loc.next
+            
+            // we find a pub at the grid point and add to linked list
+            if let walkItem = grid_Y_X[Y][X] {
+                currentLocation.next = walkItem
+                grid_Y_X[Y][X] = walkItem.next
+                currentLocation = walkItem
                 count++
-                
             } else {
-                walkRoute.append(newCoord)
-                lastCoord = newCoord
+                currentLocation.walkRoute.append(newCoord)
             }
         }
-        return (locationRoute, walkRoute)
+        return startingLocation
     }
 
-    
-    func createLocationList(locations : [CLLocationCoordinate2D]) -> LocationObject? {
-        var previousLocation : LocationObject?
+    // takes locations array and builds a linked list of LocationObjects
+    func loadWalkList(locations : [MKMapItem]) -> WalkMapItem? {
+        var previousLocation : WalkMapItem?
         for i in 0..<locations.count {
-            var loc = LocationObject(location: locations[i])
-            if let pLoc = previousLocation?{
+            var loc = WalkMapItem(mapItem: locations[i])
+            if let pLoc = previousLocation? {
                 loc.next = pLoc
                 previousLocation = loc
             }
@@ -91,7 +78,7 @@ class RandomWalk {
         return CLLocationCoordinate2DMake(newLat, newLon)
     }
     
-    func createGrid(upperleft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D, locationList : LocationObject) -> Array<Array<LocationObject?>> {
+    func createGrid(upperleft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D, walkListItem : WalkMapItem) -> Array<Array<WalkMapItem?>> {
         let width = abs(lowerRight.longitude - upperleft.longitude)
         let height = abs(upperleft.latitude - lowerRight.latitude)
         // discritizing map into bins
@@ -102,24 +89,26 @@ class RandomWalk {
         self.mapBinX = width / Double(numberOfBinsWide)
         self.mapBinY = height / Double(numberOfBinsHigh)
         
-        var arrayX = [LocationObject?](count: numberOfBinsWide, repeatedValue: nil)
-        var grid = Array<Array<LocationObject?>>()
+        // create 2D array
+        var arrayX = [WalkMapItem?](count: numberOfBinsWide, repeatedValue: nil)
+        var grid = Array<Array<WalkMapItem?>>()
         for i in 0..<numberOfBinsHigh {
             grid.append(arrayX)
         }
         
-        var loc = locationList
+        var walkItem = walkListItem
         while(true) {
-            // get the map bin that the location would exist in
-            var X = Int(floor(loc.location.longitude / self.mapBinX))
-            var Y = Int(floor(loc.location.latitude / self.mapBinY))
-            if let otherLoc = grid[Y][X]? {
-                otherLoc.next = loc
+            var loc = walkItem.mapItem.placemark.location.coordinate
+            var X = Int(floor(loc.longitude / self.mapBinX))
+            var Y = Int(floor(loc.latitude / self.mapBinY))
+            
+            if let otherWalkItem = grid[Y][X]? {
+                otherWalkItem.next = walkItem
             } else {
-                grid[Y][X] = loc
+                grid[Y][X] = walkItem
             }
-            if let next = loc.next {
-                loc = next
+            if let next = walkItem.next {
+                walkItem = next
             } else {
                 break
             }
@@ -127,6 +116,8 @@ class RandomWalk {
         return grid
     }
     
+    
+    //TODO: re-write using a polar gaussian function to correct for low diagonal probability
     func newGaussian() -> (g1 : Double, g2 : Double) {
         let u1 = Double(arc4random()) / Double(UINT32_MAX); // uniform distribution
         let u2 = Double(arc4random()) / Double(UINT32_MAX); // uniform distribution

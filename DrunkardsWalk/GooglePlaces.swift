@@ -96,7 +96,9 @@ class GooglePlaces {
             
             self.search(location, radius: radius, query: query) { (items, errorDescription) -> Void in
                 if self.delegate != nil {
-                    self.delegate!.googlePlacesSearchResult(items!)
+                    NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                        self.delegate!.googlePlacesSearchResult(items!)
+                    })
                 }
             }
             
