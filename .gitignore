@@ -1,5 +1,6 @@
 # API Keys
 google.plist
+CrashlyticsAPI.swift
 
 # OSX Finder
 .DS_Store
