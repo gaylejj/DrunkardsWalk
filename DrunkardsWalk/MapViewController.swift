@@ -21,6 +21,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var animationEngine : AnimationEngine!
     
+    var difference : CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +53,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         
         self.googlePlaces.delegate = self
+        
+        self.difference = self.view.frame.origin.y - self.mapView.frame.origin.y
+
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -156,7 +161,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         overlay.bounds = CGRect(x: self.mapView.frame.origin.x, y: self.mapView.frame.origin.y, width: self.mapView.frame.width, height: self.mapView.frame.height)
         overlay.clipsToBounds = true
         
-        self.animationEngine = AnimationEngine(view: overlay, points: points)
+        self.animationEngine = AnimationEngine(view: overlay, points: points, difference: self.difference)
         
         self.view.addSubview(self.animationEngine.view)
     }
@@ -173,9 +178,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
         
     func convertCLLocationCoordinate(coordinate: CLLocationCoordinate2D) -> CGPoint {
-        let difference = self.view.frame.origin.y - self.mapView.frame.origin.y
         var point = self.mapView.convertCoordinate(coordinate, toPointToView: self.view)
-        var yDiff = point.y - difference
+        var yDiff = point.y + self.difference
         let newPoint = CGPointMake(point.x, yDiff)
         return newPoint
     }
