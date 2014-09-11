@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5D19BA7096007A3879 /* humanLeftFoot.png */; };
 		252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 252C0B5F19BA7096007A3879 /* humanRightFoot.png */; };
-		25A1A68319C23DC400918C2C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25A1A68219C23DC400918C2C /* Crashlytics.framework */; };
+		2572ED2B19C2447300DB9755 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2572ED2A19C2447300DB9755 /* Crashlytics.framework */; };
 		25A1A68719C23F3F00918C2C /* CrashlyticsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */; };
 		25C527FE19BE70BF007FBE80 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */; };
 		25C5280219BE7198007FBE80 /* humanLeftFoot18px.png in Resources */ = {isa = PBXBuildFile; fileRef = 25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */; };
@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		252C0B5D19BA7096007A3879 /* humanLeftFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot.png; sourceTree = "<group>"; };
 		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
-		25A1A68219C23DC400918C2C /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		2572ED2A19C2447300DB9755 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashlyticsAPI.swift; path = ../CrashlyticsAPI.swift; sourceTree = "<group>"; };
 		25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25A1A68319C23DC400918C2C /* Crashlytics.framework in Frameworks */,
+				2572ED2B19C2447300DB9755 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +159,7 @@
 				38D52EA619BFA79600A53C75 /* NotificationController.swift */,
 				3863412F19C0ED4900E6C180 /* Constants.swift */,
 				25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */,
-				25A1A68219C23DC400918C2C /* Crashlytics.framework */,
+				2572ED2A19C2447300DB9755 /* Crashlytics.framework */,
 			);
 			path = DrunkardsWalk;
 			sourceTree = "<group>";
