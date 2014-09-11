@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let change = UIAlertAction(title: "Reccomended", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
                 application.registerUserNotificationSettings(desiredSettings)
             })
-            let okay = UIAlertAction(title: "Don't Care", style: UIAlertActionStyle.Default, handler: nil)
+            let okay = UIAlertAction(title: "Ignore", style: UIAlertActionStyle.Default, handler: nil)
             
             askChange.addAction(change)
             askChange.addAction(okay)

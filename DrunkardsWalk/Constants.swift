@@ -29,4 +29,7 @@ struct kNotification {
         case PubCrawl = "PUB_CAT"
         case Uber = "UBER_CAT"
     }
+    enum Remote : String {
+        case JustToModify = "JUST_REMOTE_ID"
+    }
 }
