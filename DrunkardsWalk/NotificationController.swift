@@ -13,16 +13,36 @@
 import UIKit
 import MapKit
 
-
 //We still need to do the logic for Uber. Finesse a bit of logic to help the use not spend money on getting to a loction that they can easily walk to. We'll have to figure out a good place to get that working.
 
 class NotificationController {
     
     init(){
-        self.setupNotifications()
+        self.setupNotificationActions()
     }
     
-//MARK: - Scheduling a Notification
+    
+    //MARK: - Scheduling a Notification
+    func generateNotifications(searchResult: [MKMapItem]) {
+        
+        for mapItem in searchResult {
+            if mapItem.name != "Current Location" {
+                var coordinate = mapItem.placemark.coordinate
+                var region = CLCircularRegion(circularRegionWithCenter: coordinate, radius: 25, identifier: "PubRegions")
+                
+                //This should present a notification to changes to the CLCircularRegion on exit.
+                region.notifyOnEntry = true //As of right now lets let this stay on.
+                region.notifyOnExit = true
+                
+                //Monitor regions from here.
+                //self.fakeRegionManager.startMonitoringRegions(region)
+                
+                //With new architecture idea I am having for the notifications, this is where I'll send the region information to the appDelegate's notificationController.
+                self.scheduleNotificationWithRegion(region)
+            }
+        }
+    }
+    
     func scheduleNotificationWithRegion(region : CLRegion) {
         
         /*
@@ -51,7 +71,7 @@ class NotificationController {
         notification.alertBody = "Fired at \(dateTime)"
         
         //Regions related code
-        //        notification.region
+        //notification.region
         //notification.regionTriggersOnce = true
         
         //Send the notification to
@@ -64,7 +84,7 @@ class NotificationController {
     }
     
     //MARK: - Notification Actions
-    func setupNotifications() {
+    func setupNotificationActions() {
         //Notification Actions:
         let checkAction = UIMutableUserNotificationAction()
         checkAction.title = "\u{e606}"
@@ -103,7 +123,6 @@ class NotificationController {
         uberNotification.setActions([callAction, cancelAction], forContext: UIUserNotificationActionContext.Default)
         uberNotification.setActions([callAction, cancelAction], forContext: UIUserNotificationActionContext.Minimal)
         
-        
         //Takes defined category types and registers them within the application.
         var types = UIUserNotificationType.Alert | UIUserNotificationType.Sound
         var categories = NSSet(objects: pubCrawlCategory, uberNotification)
@@ -111,20 +130,16 @@ class NotificationController {
         var settings = UIUserNotificationSettings(forTypes: types, categories: categories)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
-        
     }
     
-    
-    //I'm keeping this here is people are interested in finding their custom font names later on. In their projects.
+    //I'm keeping this here is people are interested in finding their custom font names later in their own projects.
     func lookAtFontFamilies() {
         for fontFamily in UIFont.familyNames() {
             if let family = fontFamily as? String {
                 println("Family: \(family)")
-                
                 for fontName in UIFont.fontNamesForFamilyName(family) {
                     if let name = fontName as? String {
                         println("\tNamed: \(name)")
-                        
                     }
                 }
             }
