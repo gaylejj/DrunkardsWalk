@@ -117,14 +117,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         println("\(self.mapView.region.center.latitude), \(self.mapView.region.center.longitude)")
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
-        //TODO: Checks for results and expands region radius if necessary
-        self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
-        self.activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        self.activity!.startAnimating()
-        self.activity!.center = self.mapView.center
-        self.mapView.addSubview(self.activity!)
-        self.setRegion()
+        self.setRegion { () -> Void in
+            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
+                self.activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+                self.activity!.startAnimating()
+                self.activity!.center = self.mapView.center
+                self.mapView.addSubview(self.activity!)
 
+            })
+            
+        }
+        
+        //TODO: Checks for results and expands region radius if necessary
     }
     
     //MARK: GooglePlacesDelegate
@@ -135,15 +140,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.activity!.stopAnimating()
         self.activity!.removeFromSuperview()
         
-//        for i in 0..<items.count {
-//            println(items[i].name)
-//        }
-
-        
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
             var points = self.convertMapItemToCLLocation(items)
+            let currentLocation = self.mapView.userLocation
+            let currentCoord = currentLocation.coordinate
+            let currentPoint = self.convertCLLocationCoordinate(currentCoord)
+            points.insert(currentPoint, atIndex: 0)
             self.setUpOverlayView(points)
-//            self.animationEngine.points = points
             self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
         }
 
@@ -173,10 +176,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
         
     func convertCLLocationCoordinate(coordinate: CLLocationCoordinate2D) -> CGPoint {
-        return self.mapView.convertCoordinate(coordinate, toPointToView: self.view)
+        let difference = self.view.frame.origin.y - self.mapView.frame.origin.y
+        var point = self.mapView.convertCoordinate(coordinate, toPointToView: self.view)
+        var yDiff = point.y - difference
+        let newPoint = CGPointMake(point.x, yDiff)
+        return newPoint
     }
     
-    func setRegion() {
+    func setRegion(completion: () -> Void) {
         let lat = self.mapView.userLocation.coordinate.latitude
         let long = self.mapView.userLocation.coordinate.longitude
         
@@ -188,6 +195,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let region = MKCoordinateRegionMake(location, span)
         
         self.mapView.setRegion(region, animated: true)
+        completion()
     }
     
     override func didReceiveMemoryWarning() {
