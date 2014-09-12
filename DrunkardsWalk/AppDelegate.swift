@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Crashlytics
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,38 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
-        
-        if let note = launchOptions.objectForKey(UIApplicationLaunchOptionsLocalNotificationKey) as? UILocalNotification {
-            
-        }
-        
         //This is to check is the application opened in the background.
         let state = application.applicationState
         if state == UIApplicationState.Background {
             
         }
         
-        
         //This looks at the current settings and compares them to what we want. If they are not the same, this'll register the settings and ask to notifications for the app.
         
         //https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW13
         //Listin 2-4
-        if let notificationLaunch = launchOptions.objectForKey(UIApplicationLaunchOptionsLocalNotificationKey) as? UILocalNotification {
-            if let item = notificationLaunch.userInfo as? [String:AnyObject] {
+//        if let notificationLaunch = launchOptions.objectForKey(UIApplicationLaunchOptionsLocalNotificationKey) as? UILocalNotification {
+//            if let item = notificationLaunch.userInfo as? [String:AnyObject] {
                 //This key needs to be customized.
                 //if let itemNamed = item["Key"] as? String {}
-            }
-        }
-        
-        let currentSettings = application.currentUserNotificationSettings()
-        let types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
-        var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        
-        if currentSettings != settings {
-            application.registerUserNotificationSettings(settings)
-
-        }
-        
+//            }
+//        }
+    
         Crashlytics.startWithAPIKey(CrashlyticsAPI.apiKey())
         
         return true
@@ -137,11 +123,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.applicationState == UIApplicationState.Active {
             if alert == nil {
                 self.alert = UIAlertController(title: "Hey!", message: "\(notification.alertBody)", preferredStyle: UIAlertControllerStyle.Alert)
-                
                 var okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 self.alert?.addAction(okay)
             }
-            self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
+            //self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
         }
     }
     
