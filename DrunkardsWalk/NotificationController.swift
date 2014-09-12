@@ -101,12 +101,12 @@ class NotificationController {
         let rateUp = UIMutableUserNotificationAction()
         rateUp.title = "\u{e602}"
         rateUp.identifier = kNotification.Action.RateUp.toRaw()
-        rateUp.activationMode = UIUserNotificationActivationMode.Background
+        rateUp.activationMode = UIUserNotificationActivationMode.Foreground
         
         let rateDown = UIMutableUserNotificationAction()
         rateDown.title = "\u{e603}"
         rateDown.identifier = kNotification.Action.RateDown.toRaw()
-        rateDown.activationMode = UIUserNotificationActivationMode.Background
+        rateDown.activationMode = UIUserNotificationActivationMode.Foreground
         
         let callAction = UIMutableUserNotificationAction()
         callAction.title = "\u{600} Uber"

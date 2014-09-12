@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
+        
+        if let note = launchOptions.objectForKey(UIApplicationLaunchOptionsLocalNotificationKey) as? UILocalNotification {
+            
+        }
         
         //This is to check is the application opened in the background.
         let state = application.applicationState
@@ -149,14 +154,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch action {
                 case .Check:
                     println()
-                    //var backgroundTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
-                    //This is for tasks
-                    //}
-                    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                    var actionTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+                        
+                        
+                        
+                    }
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
                     //Handle task
                     //application.endBackgroundTask(backgroundTask)
                     //backgroundTask = UIBackgroundTaskInvalid
-                    //})
+                    })
                     
                 case .Cancel:
                     application.cancelLocalNotification(notification)
@@ -185,16 +192,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //})
                     
                 case .CallUber:
-                    println()
-                    //var backgroundTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+                    var uberTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
                     //This is for tasks
-                    //}
+                        if let region = notification.region as? CLCircularRegion {
+                            var startLocation = region.center
+                            //Call Uber function.
+                        }
+                    }
                     
-                    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
-                    //Handle task
-                    //application.endBackgroundTask(backgroundTask)
-                    //backgroundTask = UIBackgroundTaskInvalid
-                    //})
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                        () -> Void in
+                        //Handle task
+                        application.endBackgroundTask(uberTask)
+                        uberTask = UIBackgroundTaskInvalid
+                    })
                 }
             }
         }
@@ -265,4 +276,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
