@@ -29,6 +29,9 @@
 		42CDDA4419BA69950032B533 /* DrunkardsWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */; };
 		4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */; };
 		4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */; };
+		4EA3683B19C358A000CE0070 /* Pub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3683A19C358A000CE0070 /* Pub.swift */; };
+		4EA3683D19C358A100CE0070 /* PubCrawl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3683C19C358A100CE0070 /* PubCrawl.swift */; };
+		4EA3683F19C358D400CE0070 /* CDPubCrawl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3683E19C358D400CE0070 /* CDPubCrawl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrunkardsWalkTests.swift; sourceTree = "<group>"; };
 		4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchEngine.swift; sourceTree = "<group>"; };
 		4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+		4EA3683A19C358A000CE0070 /* Pub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pub.swift; sourceTree = "<group>"; };
+		4EA3683C19C358A100CE0070 /* PubCrawl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawl.swift; sourceTree = "<group>"; };
+		4EA3683E19C358D400CE0070 /* CDPubCrawl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDPubCrawl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 		42CDDA2A19BA69950032B533 /* DrunkardsWalk */ = {
 			isa = PBXGroup;
 			children = (
+				4EA3683919C3588900CE0070 /* CoreData */,
 				42CDDA2D19BA69950032B533 /* AppDelegate.swift */,
 				42CDDA3219BA69950032B533 /* MapViewController.swift */,
 				4233548519BE16CE009C34D9 /* RandomWalk.swift */,
@@ -154,7 +161,6 @@
 				4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */,
 				42CDDA3419BA69950032B533 /* Main.storyboard */,
 				42CDDA3719BA69950032B533 /* Images.xcassets */,
-				42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */,
 				42CDDA2B19BA69950032B533 /* Supporting Files */,
 				4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */,
 				386E1F9919C2233D004FEB23 /* MapViewExtension.swift */,
@@ -193,6 +199,17 @@
 				42CDDA4219BA69950032B533 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4EA3683919C3588900CE0070 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				42CDDA2F19BA69950032B533 /* DrunkardsWalk.xcdatamodeld */,
+				4EA3683C19C358A100CE0070 /* PubCrawl.swift */,
+				4EA3683A19C358A000CE0070 /* Pub.swift */,
+				4EA3683E19C358D400CE0070 /* CDPubCrawl.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +345,7 @@
 				38D52EA719BFA79600A53C75 /* NotificationController.swift in Sources */,
 				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
 				4254A6A619C0F77300B94D52 /* WalkMapItem.swift in Sources */,
+				4EA3683D19C358A100CE0070 /* PubCrawl.swift in Sources */,
 				4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */,
 				42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */,
 				386E1F9A19C2233D004FEB23 /* MapViewExtension.swift in Sources */,
@@ -335,6 +353,8 @@
 				3863413019C0ED4900E6C180 /* Constants.swift in Sources */,
 				4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */,
 				25C527FE19BE70BF007FBE80 /* AnimationEngine.swift in Sources */,
+				4EA3683F19C358D400CE0070 /* CDPubCrawl.swift in Sources */,
+				4EA3683B19C358A000CE0070 /* Pub.swift in Sources */,
 				42CDDA3119BA69950032B533 /* DrunkardsWalk.xcdatamodeld in Sources */,
 				4233548619BE16CE009C34D9 /* RandomWalk.swift in Sources */,
 			);
