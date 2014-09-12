@@ -13,8 +13,6 @@
 import UIKit
 import MapKit
 
-//We still need to do the logic for Uber. Finesse a bit of logic to help the use not spend money on getting to a loction that they can easily walk to. We'll have to figure out a good place to get that working.
-
 class NotificationController {
     
     init(){
@@ -146,5 +144,4 @@ class NotificationController {
             }
         }
     }
-    
 }
