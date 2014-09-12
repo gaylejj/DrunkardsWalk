@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Map View Controller-->
@@ -56,6 +57,17 @@
                                     <action selector="crawlButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Anf-XT-RJH"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v9g-KG-eEv">
+                                <rect key="frame" x="25" y="468" width="545" height="29"/>
+                                <segments>
+                                    <segment title="Standard"/>
+                                    <segment title="Hybrid"/>
+                                    <segment title="Satellite"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="valueChanged" id="gqi-Qy-VBj"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -66,10 +78,13 @@
                             <constraint firstItem="p16-F4-OdS" firstAttribute="top" secondItem="EfV-pM-DoT" secondAttribute="bottom" constant="8" id="V9s-08-X9d"/>
                             <constraint firstAttribute="centerX" secondItem="2YV-ID-Vnb" secondAttribute="centerX" id="Vk2-5j-g0f"/>
                             <constraint firstItem="p16-F4-OdS" firstAttribute="centerY" secondItem="1hB-o7-vbX" secondAttribute="centerY" id="WS5-96-bH3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="v9g-KG-eEv" secondAttribute="trailing" constant="14" id="Yud-3E-oST"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="p16-F4-OdS" secondAttribute="bottom" constant="15" id="flr-2G-FCj"/>
                             <constraint firstItem="2YV-ID-Vnb" firstAttribute="leading" secondItem="1hB-o7-vbX" secondAttribute="trailing" constant="15" id="khC-BE-h84"/>
                             <constraint firstItem="EfV-pM-DoT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="sPF-br-Wxj"/>
+                            <constraint firstItem="p16-F4-OdS" firstAttribute="top" secondItem="v9g-KG-eEv" secondAttribute="bottom" constant="40" id="wOr-gE-xlz"/>
                             <constraint firstItem="p16-F4-OdS" firstAttribute="centerY" secondItem="2YV-ID-Vnb" secondAttribute="centerY" id="x94-YU-X9l"/>
+                            <constraint firstItem="v9g-KG-eEv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="9" id="y26-J3-CXe"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
