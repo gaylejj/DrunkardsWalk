@@ -154,16 +154,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         //TODO: Send info to Random Walk Engine
         self.activity.stopAnimating()
-            
-        self.dropPinsForMapItems(items)
-            
-        var points = self.convertMapItemToCLLocation(items)
-        let currentLocation = self.mapView.userLocation
-        let currentCoord = currentLocation.coordinate
-        let currentPoint = self.convertCLLocationCoordinate(currentCoord)
-        points.insert(currentPoint, atIndex: 0)
-//      self.setUpOverlayView(points)
-//      self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
+        
         let currentLoc = self.mapView.userLocation.coordinate
         
         //var center = CLLocationCoordinate2DMake(47.6235481, -122.336212)
@@ -178,8 +169,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var randWalk = RandomWalk(maxMax: maxMax, minMin: minMin)
         
         var walkList = randWalk.walkOverLocations(self.pubCount, startingLocation: startingMapItem, locations: items)
+        var mapItemsArray = walkList!.getMapItems()
+        var points = self.convertMapItemToCLLocation(mapItemsArray)
+        let currentLocation = self.mapView.userLocation
+        let currentCoord = currentLocation.coordinate
+        let currentPoint = self.convertCLLocationCoordinate(currentCoord)
+        points.insert(currentPoint, atIndex: 0)
         
-        self.activity.stopAnimating()
+        self.setUpOverlayView(points)
+        self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
+        
+        self.dropPinsForMapItems(mapItemsArray)
         self.activity.removeFromSuperview()
         
     }
