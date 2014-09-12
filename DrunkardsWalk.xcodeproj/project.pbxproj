@@ -54,7 +54,7 @@
 		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
 		2572ED2A19C2447300DB9755 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2572ED2F19C2ACB500DB9755 /* beer case.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer case.png"; sourceTree = "<group>"; };
-		25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashlyticsAPI.swift; path = ../../CrashlyticsAPI.swift; sourceTree = "<group>"; };
+		25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashlyticsAPI.swift; path = ../CrashlyticsAPI.swift; sourceTree = "<group>"; };
 		25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
 		25C5280119BE7198007FBE80 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };

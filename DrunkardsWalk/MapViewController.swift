@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var difference : CGFloat = 0.0
     
-    var pubCount = 0
+    var pubCount = 5
     
     let mapBoundaryMultiplier = 1.2
     
@@ -163,6 +163,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         points.insert(currentPoint, atIndex: 0)
 //      self.setUpOverlayView(points)
 //      self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
+        let currentLoc = self.mapView.userLocation.coordinate
+        
+        //var center = CLLocationCoordinate2DMake(47.6235481, -122.336212)
+        
+        var placemark = MKPlacemark(coordinate: currentLoc, addressDictionary: nil)
+        var startingMapItem = MKMapItem(placemark: placemark)
+        startingMapItem.name = "Start"
+        
+        var maxMax = CLLocationCoordinate2DMake(47.63609422, -122.317276)
+        var minMin = CLLocationCoordinate2DMake(47.61100198, -122.355148)
+        
+        var randWalk = RandomWalk(maxMax: maxMax, minMin: minMin)
+        
+        var walkList = randWalk.walkOverLocations(self.pubCount, startingLocation: startingMapItem, locations: items)
+        
+        self.activity.stopAnimating()
+        self.activity.removeFromSuperview()
         
     }
     
