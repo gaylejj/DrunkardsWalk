@@ -21,7 +21,6 @@ class NotificationController {
         self.setupNotificationActions()
     }
     
-    
     //MARK: - Scheduling a Notification
     func generateNotifications(searchResult: [MKMapItem]) {
         
@@ -56,6 +55,7 @@ class NotificationController {
         notification.soundName = UILocalNotificationDefaultSoundName
         //notification.applicationIconBadgeNumber
         notification.timeZone = NSTimeZone.defaultTimeZone()
+        notification.category = kNotification.Category.PubCrawl.toRaw()
         
         //Testing with the time property and alertss
         //var dateTime = NSDate.date()
@@ -64,8 +64,9 @@ class NotificationController {
         var dateTime = NSCalendar.currentCalendar().dateByAddingComponents(dateComponents, toDate: NSDate.date(), options: nil)
         notification.fireDate = dateTime
         
-        //Way to store data.
+        //Way to store data. This will be used to submit the key to help our application open up to the right notification format.
         //notification.userInfo = [String:String]()
+        
         //notification.alertLaunchImage
         notification.alertAction = "Alert!"
         notification.alertBody = "Fired at \(dateTime)"
@@ -83,7 +84,7 @@ class NotificationController {
         
     }
     
-    //MARK: - Notification Actions
+    //MARK: - Setup Notification Actions
     func setupNotificationActions() {
         //Notification Actions:
         let checkAction = UIMutableUserNotificationAction()

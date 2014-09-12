@@ -16,6 +16,8 @@ Sorry if this looks pretty bad, this is where I've been developing 3 different p
 */
 
 extension MapViewController {
+    
+    //MARK: -
     func startMonitoring() {
         if CLLocationManager.locationServicesEnabled() {
             self.locationManager.startMonitoringVisits()
