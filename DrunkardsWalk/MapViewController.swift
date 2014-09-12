@@ -23,7 +23,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var difference : CGFloat = 0.0
     
-    var pubCount = 5
+    var pubCount = 0
+    var lastTappedLocation : CLLocationCoordinate2D!
+    var lastTappedName : String!
     
     let mapBoundaryMultiplier = 1.2
     
@@ -123,11 +125,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func crawlButtonPressed(sender: AnyObject) {
-        println("\(self.mapView.region.center.latitude), \(self.mapView.region.center.longitude)")
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
         self.setRegion { () -> Void in
-            self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
+            self.googlePlaces.searchWithDelegate(self.mapView.userLocation.coordinate, radius: 1000, query: "bar")
             self.activity.hidesWhenStopped = true
             self.activity.center = self.mapView.center
             self.mapView.addSubview(self.activity)
@@ -323,6 +324,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if !view.annotation.isKindOfClass(MKUserLocation) {
 //            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
+            
+            self.lastTappedLocation = view.annotation.coordinate
+            self.lastTappedName = view.annotation.title
 
             var imageChecked = UIImage(named: "checked")
             var imageUnChecked = UIImage(named: "unchecked")
@@ -357,7 +361,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func getUber() {
         var pickupLocation = self.mapView.userLocation.location.coordinate
         var uber = Uber(pickupLocation: pickupLocation)
-//        uber.dropoffLocation = 
+        if self.lastTappedLocation != nil {
+            uber.dropoffLocation = self.lastTappedLocation
+        }
+        if self.lastTappedName != nil {
+            uber.dropoffNickname = self.lastTappedName
+        }
         uber.deepLink()
     }
     
