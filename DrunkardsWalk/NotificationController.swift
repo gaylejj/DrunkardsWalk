@@ -86,28 +86,28 @@ class NotificationController {
     func setupNotificationActions() {
         //Notification Actions:
         let checkAction = UIMutableUserNotificationAction()
-        checkAction.title = "\u{e606}"
+        checkAction.title = "Done" //"\u{e606}"
         checkAction.identifier = kNotification.Action.Check.toRaw()
         checkAction.activationMode = UIUserNotificationActivationMode.Background
         
         let cancelAction = UIMutableUserNotificationAction()
-        cancelAction.title = "\u{e604}"
+        cancelAction.title = "Cancel" //"\u{e604}"
         cancelAction.identifier = kNotification.Action.Cancel.toRaw()
         cancelAction.destructive = true
         cancelAction.activationMode = UIUserNotificationActivationMode.Background
         
         let rateUp = UIMutableUserNotificationAction()
-        rateUp.title = "\u{e602}"
+        rateUp.title = "Like" //"\u{e602}"
         rateUp.identifier = kNotification.Action.RateUp.toRaw()
         rateUp.activationMode = UIUserNotificationActivationMode.Foreground
         
         let rateDown = UIMutableUserNotificationAction()
-        rateDown.title = "\u{e603}"
+        rateDown.title = "Dislike" //"\u{e603}"
         rateDown.identifier = kNotification.Action.RateDown.toRaw()
         rateDown.activationMode = UIUserNotificationActivationMode.Foreground
         
         let callAction = UIMutableUserNotificationAction()
-        callAction.title = "\u{600} Uber"
+        callAction.title = "Uber" //"\u{600} Uber"
         callAction.identifier = kNotification.Action.CallUber.toRaw()
         callAction.activationMode = UIUserNotificationActivationMode.Background
         

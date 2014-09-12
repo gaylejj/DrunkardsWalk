@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
         
-        
         //This looks at the current settings and compares them to what we want. If they are not the same, this'll register the settings and ask to notifications for the app.
         
         //https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW13
@@ -124,11 +123,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.applicationState == UIApplicationState.Active {
             if alert == nil {
                 self.alert = UIAlertController(title: "Hey!", message: "\(notification.alertBody)", preferredStyle: UIAlertControllerStyle.Alert)
-                
                 var okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 self.alert?.addAction(okay)
             }
-            self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
+            //self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
         }
     }
     
