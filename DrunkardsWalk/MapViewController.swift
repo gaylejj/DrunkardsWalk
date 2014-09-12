@@ -142,6 +142,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func googlePlacesSearchResult(items: [MKMapItem]) {
         
+        //CoreData test
+//        var cd = CDPubCrawl()
+//        cd.createPubCrawl(items)
+        
         //TODO: Send info to Random Walk Engine
         
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
