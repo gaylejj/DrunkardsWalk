@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Pub" representedClassName="DrunkardsWalk.Pub" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pubCrawl" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PubCrawl" inverseName="pubs" inverseEntity="PubCrawl" syncable="YES"/>
+    </entity>
+    <entity name="PubCrawl" representedClassName="DrunkardsWalk.PubCrawl" syncable="YES">
+        <attribute name="currentPub" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pubCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="pubs" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Pub" inverseName="pubCrawl" inverseEntity="Pub" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Pub" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="PubCrawl" positionX="-324" positionY="-48" width="128" height="133"/>
+    </elements>
 </model>
