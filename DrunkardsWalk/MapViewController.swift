@@ -17,7 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var googlePlaces = GooglePlaces()
     var locationManager : CLLocationManager!
-    var activity : UIActivityIndicatorView?
+    var activity  = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     var animationEngine : AnimationEngine!
     
@@ -125,14 +125,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
         self.setRegion { () -> Void in
-            NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
-                self.activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-                self.activity!.startAnimating()
-                self.activity!.center = self.mapView.center
-                self.mapView.addSubview(self.activity!)
+            self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
+            self.activity.hidesWhenStopped = true
+            self.activity.center = self.mapView.center
+            self.mapView.addSubview(self.activity)
+            self.activity.startAnimating()
+            self.activity.accessibilityIdentifier = "Activity Indicator"
 
-            })
             
         }
         
@@ -144,18 +143,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func googlePlacesSearchResult(items: [MKMapItem]) {
         
         //TODO: Send info to Random Walk Engine
-        self.activity!.stopAnimating()
-        self.activity!.removeFromSuperview()
         
         NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            self.activity.stopAnimating()
+            
+            self.dropPinsForMapItems(items)
+            
             var points = self.convertMapItemToCLLocation(items)
             let currentLocation = self.mapView.userLocation
             let currentCoord = currentLocation.coordinate
             let currentPoint = self.convertCLLocationCoordinate(currentCoord)
             points.insert(currentPoint, atIndex: 0)
-            self.setUpOverlayView(points)
-            self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
-        }   
+//            self.setUpOverlayView(points)
+//            self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
+        }
     }
     
     func setUpOverlayView(points: [CGPoint]) {
@@ -199,6 +200,51 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.mapView.setRegion(region, animated: true)
         completion()
+    }
+    
+    //MARK: MKAnnotation Setup
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if annotation is MKUserLocation {
+            return nil
+        } else {
+            if let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView {
+                pinView.annotation = annotation
+                pinView.image = UIImage(named: "beer case")
+                pinView.canShowCallout = true
+                return pinView
+            } else {
+                var pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+                pinView.image = UIImage(named: "beer case")
+                pinView.canShowCallout = true
+                return pinView
+            }
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        let annotationCenter = mapView.convertCoordinate(view.annotation.coordinate, toPointToView: mapView)
+        
+        if !view.annotation.isKindOfClass(MKUserLocation) {
+            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
+//            view.rightCalloutAccessoryView = calloutView
+            calloutView.backgroundColor = UIColor.greenColor()
+            let calloutLabel = UILabel(frame: calloutView.bounds)
+            if calloutLabel.text != nil {
+                calloutLabel.text = view.annotation.title
+                calloutLabel.font = UIFont(name: "Avenir", size: 14.0)
+                calloutLabel.textColor = UIColor.blackColor()
+            }
+//            calloutView.addSubview(calloutLabel)
+        }
+    }
+    
+    func dropPinsForMapItems(mapItems: [MKMapItem]) {
+        for item in mapItems {
+            var annot = MKPointAnnotation()
+            annot.coordinate = item.placemark.coordinate
+            annot.title = item.name
+            self.mapView.addAnnotation(annot)
+        }
     }
     
     override func didReceiveMemoryWarning() {
