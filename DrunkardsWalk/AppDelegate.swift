@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Crashlytics
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,24 +19,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var alert : UIAlertController?
 
 //MARK: -
+    //func applicationWillEnterForeground(application: UIApplication) {}
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
-        //This looks at the current settings and compares them to what we want. If they are not the same, this'll register the settings and ask to notifications for the app.
-        let currentSettings = application.currentUserNotificationSettings()
-        let types = UIUserNotificationType.Sound | UIUserNotificationType.Alert
-        var settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        
-        if currentSettings != settings {
-            application.registerUserNotificationSettings(settings)
-
+        //This is to check is the application opened in the background.
+        let state = application.applicationState
+        if state == UIApplicationState.Background {
+            
         }
         
+        //This looks at the current settings and compares them to what we want. If they are not the same, this'll register the settings and ask to notifications for the app.
+        
+        //https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW13
+        //Listin 2-4
+//        if let notificationLaunch = launchOptions.objectForKey(UIApplicationLaunchOptionsLocalNotificationKey) as? UILocalNotification {
+//            if let item = notificationLaunch.userInfo as? [String:AnyObject] {
+                //This key needs to be customized.
+                //if let itemNamed = item["Key"] as? String {}
+//            }
+//        }
+    
         Crashlytics.startWithAPIKey(CrashlyticsAPI.apiKey())
         
         return true
     }
-
+    
+    //func applicationDidBecomeActive(application: UIApplication) {}
     func applicationWillResignActive(application: UIApplication!) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -44,6 +54,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication!) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        //var backgroundTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+            //This is for tasks
+        //}
+        
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+            //Handle task
+            //application.endBackgroundTask(backgroundTask)
+            //backgroundTask = UIBackgroundTaskInvalid
+        //})
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication!) {
@@ -91,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             askChange.addAction(change)
             askChange.addAction(okay)
             
-            self.window?.rootViewController?.presentViewController(askChange, animated: true, completion: nil)
+            //self.window?.rootViewController?.presentViewController(askChange, animated: true, completion: nil)
         }
     }
     
@@ -102,11 +123,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.applicationState == UIApplicationState.Active {
             if alert == nil {
                 self.alert = UIAlertController(title: "Hey!", message: "\(notification.alertBody)", preferredStyle: UIAlertControllerStyle.Alert)
-                
                 var okay = UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil)
                 self.alert?.addAction(okay)
             }
-            self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
+            //self.window?.rootViewController?.presentViewController(self.alert!, animated: true, completion: nil)
         }
     }
     
@@ -121,14 +141,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch action {
                 case .Check:
                     println()
+                    var actionTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+                        
+                        
+                        
+                    }
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                    //Handle task
+                    //application.endBackgroundTask(backgroundTask)
+                    //backgroundTask = UIBackgroundTaskInvalid
+                    })
+                    
                 case .Cancel:
-                    println()
+                    application.cancelLocalNotification(notification)
                 case .RateUp:
                     println()
+                    //var backgroundTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+                    //This is for tasks
+                    //}
+                    
+                    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                    //Handle task
+                    //application.endBackgroundTask(backgroundTask)
+                    //backgroundTask = UIBackgroundTaskInvalid
+                    //})
+                    
                 case .RateDown:
                     println()
+                    //var backgroundTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+                    //This is for tasks
+                    //}
+                    
+                    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+                    //Handle task
+                    //application.endBackgroundTask(backgroundTask)
+                    //backgroundTask = UIBackgroundTaskInvalid
+                    //})
+                    
                 case .CallUber:
-                    println()
+                    var uberTask = application.beginBackgroundTaskWithExpirationHandler { () -> Void in
+                    //This is for tasks
+                        if let region = notification.region as? CLCircularRegion {
+                            var startLocation = region.center
+                            //Call Uber function.
+                        }
+                    }
+                    
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                        () -> Void in
+                        //Handle task
+                        application.endBackgroundTask(uberTask)
+                        uberTask = UIBackgroundTaskInvalid
+                    })
                 }
             }
         }
@@ -199,4 +263,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
