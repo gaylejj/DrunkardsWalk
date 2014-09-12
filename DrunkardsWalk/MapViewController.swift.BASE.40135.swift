@@ -24,10 +24,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var difference : CGFloat = 0.0
     
     var pubCount = 0
-    var lastTappedLocation : CLLocationCoordinate2D!
-    var lastTappedName : String!
-    
-    let mapBoundaryMultiplier = 1.2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,10 +121,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func crawlButtonPressed(sender: AnyObject) {
+        println("\(self.mapView.region.center.latitude), \(self.mapView.region.center.longitude)")
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
         self.setRegion { () -> Void in
-            self.googlePlaces.searchWithDelegate(self.mapView.userLocation.coordinate, radius: 1000, query: "bar")
+            self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
             self.activity.hidesWhenStopped = true
             self.activity.center = self.mapView.center
             self.mapView.addSubview(self.activity)
@@ -144,27 +141,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //MARK: GooglePlacesDelegate
     
     func googlePlacesSearchResult(items: [MKMapItem]) {
-        var minToMaxLats = self.setLatBoundsForWalk(items)
-        var minToMaxLongs = self.setLongBoundsForWalk(items)
-        var coords = self.determineFurthestFromCenter(self.mapView.userLocation.coordinate, lats: minToMaxLats, longs: minToMaxLongs)
         
         //CoreData test
 //        var cd = CDPubCrawl()
 //        cd.createPubCrawl(items)
         
         //TODO: Send info to Random Walk Engine
-        self.activity.stopAnimating()
-            
-        self.dropPinsForMapItems(items)
-            
-        var points = self.convertMapItemToCLLocation(items)
-        let currentLocation = self.mapView.userLocation
-        let currentCoord = currentLocation.coordinate
-        let currentPoint = self.convertCLLocationCoordinate(currentCoord)
-        points.insert(currentPoint, atIndex: 0)
-//      self.setUpOverlayView(points)
-//      self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
         
+        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+            self.activity.stopAnimating()
+            
+            self.dropPinsForMapItems(items)
+            
+            var points = self.convertMapItemToCLLocation(items)
+            let currentLocation = self.mapView.userLocation
+            let currentCoord = currentLocation.coordinate
+            let currentPoint = self.convertCLLocationCoordinate(currentCoord)
+            points.insert(currentPoint, atIndex: 0)
+//            self.setUpOverlayView(points)
+//            self.animationEngine.animatePathBetweenTwoPoints(points[0], destination: points[1])
+        }
     }
     
     func setUpOverlayView(points: [CGPoint]) {
@@ -210,79 +206,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         completion()
     }
     
-    func setLatBoundsForWalk(mapItems: [MKMapItem]) -> ([MKMapItem]) {
-        let lat  = self.mapView.userLocation.coordinate.latitude
-        let long = self.mapView.userLocation.coordinate.longitude
-        
-        var items = mapItems
-        
-        for i in 0..<items.count {
-        //sort and get min/max lat
-            items.sort{$1.placemark.coordinate.latitude > $0.placemark.coordinate.latitude}
-        }
-        return [items.first!, items.last!]
-
-    }
-    
-    func setLongBoundsForWalk(mapItems: [MKMapItem]) -> ([MKMapItem]) {
-        let lat  = self.mapView.userLocation.coordinate.latitude
-        let long = self.mapView.userLocation.coordinate.longitude
-        
-        var items = mapItems
-        
-        for i in 0..<items.count {
-            //sort and get min/max lat
-            items.sort{$1.placemark.coordinate.longitude > $0.placemark.coordinate.longitude}
-            
-        }
-        return [items.first!, items.last!]
-        
-    }
-    
-    func determineFurthestFromCenter(center: CLLocationCoordinate2D, lats: [MKMapItem], longs: [MKMapItem]) -> (maxMax: CLLocationCoordinate2D, minMin: CLLocationCoordinate2D) {
-        
-        let distanceLatMin = abs(center.latitude - lats.first!.placemark.coordinate.latitude)
-        let distanceLatMax = abs(center.latitude - lats.last!.placemark.coordinate.latitude)
-        
-        let distanceLongMin = abs(center.longitude - longs.first!.placemark.coordinate.longitude)
-        let distanceLongMax = abs(center.longitude - longs.last!.placemark.coordinate.longitude)
-        
-        var finalLat = MKMapItem()
-        var finalLong = MKMapItem()
-        
-        if distanceLatMin > distanceLatMax {
-            finalLat = lats.first!
-        } else {
-            finalLat = lats.last!
-        }
-        
-        if distanceLongMin > distanceLongMax {
-            finalLong = longs.first!
-        } else {
-            finalLong = longs.last!
-        }
-        
-        return self.compareDistances(center, lat: finalLat, long: finalLong)
-        
-    }
-    
-    func compareDistances(center: CLLocationCoordinate2D, lat: MKMapItem, long: MKMapItem) -> (maxMax: CLLocationCoordinate2D, minMin: CLLocationCoordinate2D) {
-        
-        let distanceLat = abs(center.latitude - lat.placemark.coordinate.latitude) * mapBoundaryMultiplier
-        let distanceLong = abs(center.longitude - long.placemark.coordinate.longitude) * mapBoundaryMultiplier
-        
-        let minLat = center.latitude - distanceLat
-        let maxLat = center.latitude + distanceLat
-        
-        let minLong = center.longitude - distanceLong
-        let maxLong = center.longitude + distanceLong
-        
-        let minCoord = CLLocationCoordinate2D(latitude: minLat, longitude: minLong)
-        let maxCoord = CLLocationCoordinate2D(latitude: maxLat, longitude: maxLong)
-        
-        return (minCoord, maxCoord)
-    }
-    
     //MARK: MKAnnotation Setup
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if annotation is MKUserLocation {
@@ -306,51 +229,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let annotationCenter = mapView.convertCoordinate(view.annotation.coordinate, toPointToView: mapView)
         
         if !view.annotation.isKindOfClass(MKUserLocation) {
-//            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
-            
-            self.lastTappedLocation = view.annotation.coordinate
-            self.lastTappedName = view.annotation.title
-
-            var imageChecked = UIImage(named: "checked")
-            var imageUnChecked = UIImage(named: "unchecked")
-
-            let checkButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
-            checkButton.setImage(imageUnChecked, forState: UIControlState.Normal)
-            checkButton.setImage(imageChecked, forState: UIControlState.Highlighted)
-            
-            let uberImageView = UIImageView(image: UIImage(named: "UBER_API_Badges_1x_64px"))
-            uberImageView.frame = CGRect(origin: CGPointZero, size: CGSize(width: 31, height: 31))
-            
-            let uberButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
-            uberButton.frame = uberImageView.frame
-            uberButton.addSubview(uberImageView)
-  
-            uberButton.addTarget(self, action: "getUber", forControlEvents: UIControlEvents.TouchUpInside)
-
-            view.rightCalloutAccessoryView = checkButton
-            view.leftCalloutAccessoryView = uberButton
-
-            let calloutLabel = UILabel(frame: view.bounds)
+            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
+//            view.rightCalloutAccessoryView = calloutView
+            calloutView.backgroundColor = UIColor.greenColor()
+            let calloutLabel = UILabel(frame: calloutView.bounds)
             if calloutLabel.text != nil {
                 calloutLabel.text = view.annotation.title
                 calloutLabel.font = UIFont(name: "Avenir", size: 14.0)
                 calloutLabel.textColor = UIColor.blackColor()
             }
-            //            calloutView.addSubview(calloutLabel)
+//            calloutView.addSubview(calloutLabel)
         }
-        
-    }
-    
-    func getUber() {
-        var pickupLocation = self.mapView.userLocation.location.coordinate
-        var uber = Uber(pickupLocation: pickupLocation)
-        if self.lastTappedLocation != nil {
-            uber.dropoffLocation = self.lastTappedLocation
-        }
-        if self.lastTappedName != nil {
-            uber.dropoffNickname = self.lastTappedName
-        }
-        uber.deepLink()
     }
     
     func dropPinsForMapItems(mapItems: [MKMapItem]) {

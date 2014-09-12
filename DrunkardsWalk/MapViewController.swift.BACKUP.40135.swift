@@ -24,8 +24,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var difference : CGFloat = 0.0
     
     var pubCount = 0
-    var lastTappedLocation : CLLocationCoordinate2D!
-    var lastTappedName : String!
     
     let mapBoundaryMultiplier = 1.2
     
@@ -125,10 +123,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func crawlButtonPressed(sender: AnyObject) {
+        println("\(self.mapView.region.center.latitude), \(self.mapView.region.center.longitude)")
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
         self.setRegion { () -> Void in
-            self.googlePlaces.searchWithDelegate(self.mapView.userLocation.coordinate, radius: 1000, query: "bar")
+            self.googlePlaces.searchWithDelegate(self.mapView.region.center, radius: 1000, query: "bar")
             self.activity.hidesWhenStopped = true
             self.activity.center = self.mapView.center
             self.mapView.addSubview(self.activity)
@@ -306,10 +305,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let annotationCenter = mapView.convertCoordinate(view.annotation.coordinate, toPointToView: mapView)
         
         if !view.annotation.isKindOfClass(MKUserLocation) {
+<<<<<<< HEAD
 //            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
-            
-            self.lastTappedLocation = view.annotation.coordinate
-            self.lastTappedName = view.annotation.title
 
             var imageChecked = UIImage(named: "checked")
             var imageUnChecked = UIImage(named: "unchecked")
@@ -331,6 +328,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             view.leftCalloutAccessoryView = uberButton
 
             let calloutLabel = UILabel(frame: view.bounds)
+=======
+            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
+            //            view.rightCalloutAccessoryView = calloutView
+            calloutView.backgroundColor = UIColor.greenColor()
+            let calloutLabel = UILabel(frame: calloutView.bounds)
+>>>>>>> 06f843793f7c821f1ccd54b86ee423aaebb1f759
             if calloutLabel.text != nil {
                 calloutLabel.text = view.annotation.title
                 calloutLabel.font = UIFont(name: "Avenir", size: 14.0)
@@ -344,12 +347,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func getUber() {
         var pickupLocation = self.mapView.userLocation.location.coordinate
         var uber = Uber(pickupLocation: pickupLocation)
-        if self.lastTappedLocation != nil {
-            uber.dropoffLocation = self.lastTappedLocation
-        }
-        if self.lastTappedName != nil {
-            uber.dropoffNickname = self.lastTappedName
-        }
+//        uber.dropoffLocation = 
         uber.deepLink()
     }
     
