@@ -26,4 +26,15 @@ class WalkMapItem {
             return self.mapItem.placemark.location.coordinate
         }
     }
+    
+    // function to unpack the linked list
+    // 1) source (mapItem) or startingLocation
+    func getMapItems() -> [MKMapItem] {
+        var items = [MKMapItem]()
+        items.append(self.mapItem)
+        if let n = self.next {
+            items += n.getMapItems()
+        }
+        return items
+    }
 }

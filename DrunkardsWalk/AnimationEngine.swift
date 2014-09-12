@@ -65,6 +65,7 @@ class AnimationEngine: NSObject {
                     self.animatePathBetweenTwoPoints(point, destination: pointPlusOne)
                     
                 } else {
+                    self.view.removeFromSuperview()
                     self.delegate?.pinHasFinishedAnimation()
                 }
                 
