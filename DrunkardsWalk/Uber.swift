@@ -89,5 +89,5 @@ class Uber {
         
         return sharedApp.canOpenURL(uberProtocol)
     }
-
+    
 }

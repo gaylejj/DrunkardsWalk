@@ -305,10 +305,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let annotationCenter = mapView.convertCoordinate(view.annotation.coordinate, toPointToView: mapView)
         
         if !view.annotation.isKindOfClass(MKUserLocation) {
-            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
-            //            view.rightCalloutAccessoryView = calloutView
-            calloutView.backgroundColor = UIColor.greenColor()
-            let calloutLabel = UILabel(frame: calloutView.bounds)
+//            let calloutView = UIView(frame: CGRect(origin: view.frame.origin, size: CGSize(width: 120, height: 30)))
+
+            var imageChecked = UIImage(named: "checked")
+            var imageUnChecked = UIImage(named: "unchecked")
+
+            let checkButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+            checkButton.setImage(imageUnChecked, forState: UIControlState.Normal)
+            checkButton.setImage(imageChecked, forState: UIControlState.Highlighted)
+            
+            let uberImageView = UIImageView(image: UIImage(named: "UBER_API_Badges_1x_64px"))
+            uberImageView.frame = CGRect(origin: CGPointZero, size: CGSize(width: 31, height: 31))
+            
+            let uberButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as UIButton
+            uberButton.frame = uberImageView.frame
+            uberButton.addSubview(uberImageView)
+  
+            uberButton.addTarget(self, action: "getUber", forControlEvents: UIControlEvents.TouchUpInside)
+
+            view.rightCalloutAccessoryView = checkButton
+            view.leftCalloutAccessoryView = uberButton
+
+            let calloutLabel = UILabel(frame: view.bounds)
             if calloutLabel.text != nil {
                 calloutLabel.text = view.annotation.title
                 calloutLabel.font = UIFont(name: "Avenir", size: 14.0)
@@ -317,6 +335,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             //            calloutView.addSubview(calloutLabel)
         }
         
+    }
+    
+    func getUber() {
+        var pickupLocation = self.mapView.userLocation.location.coordinate
+        var uber = Uber(pickupLocation: pickupLocation)
+//        uber.dropoffLocation = 
+        uber.deepLink()
     }
     
     func dropPinsForMapItems(mapItems: [MKMapItem]) {
