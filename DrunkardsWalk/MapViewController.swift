@@ -25,6 +25,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var pubCount = 0
     
+    let mapBoundaryMultiplier = 1.2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -141,6 +143,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //MARK: GooglePlacesDelegate
     
     func googlePlacesSearchResult(items: [MKMapItem]) {
+        var minToMaxLats = self.setLatBoundsForWalk(items)
+        var minToMaxLongs = self.setLongBoundsForWalk(items)
+        var coords = self.determineFurthestFromCenter(self.mapView.userLocation.coordinate, lats: minToMaxLats, longs: minToMaxLongs)
         
         //CoreData test
 //        var cd = CDPubCrawl()
