@@ -40,8 +40,7 @@ class RandomWalk {
             
             //TODO: below, is reused code, which is present in the createGrid method
             // get the map bin that the location would exist in
-            var X = Int(floor(newCoord.longitude / self.mapBinX))
-            var Y = Int(floor(newCoord.latitude / self.mapBinY))
+            var (X, Y) = self.getXYBin(newCoord, upperLeft: upperLeft, lowerRight: lowerRight)
             
             // we find a pub at the grid point and add to linked list
             if let walkItem = grid_Y_X[Y][X] {
@@ -63,8 +62,8 @@ class RandomWalk {
             var loc = WalkMapItem(mapItem: locations[i])
             if let pLoc = previousLocation? {
                 loc.next = pLoc
-                previousLocation = loc
             }
+            previousLocation = loc
         }
         return previousLocation
     }
@@ -78,12 +77,20 @@ class RandomWalk {
         return CLLocationCoordinate2DMake(newLat, newLon)
     }
     
-    func createGrid(upperleft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D, walkListItem : WalkMapItem) -> Array<Array<WalkMapItem?>> {
-        let width = abs(lowerRight.longitude - upperleft.longitude)
-        let height = abs(upperleft.latitude - lowerRight.latitude)
-        // discritizing map into bins
-        let numberOfBinsWide = Int(round(width / walkBin))
-        let numberOfBinsHigh = Int(round(height / walkBin))
+    private func getXYBin(location : CLLocationCoordinate2D, upperLeft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D) -> (Int, Int) {
+        var X = Int(floor((location.longitude - upperLeft.longitude) / self.mapBinX))
+        var Y = Int(floor((location.latitude - lowerRight.latitude) / self.mapBinY))
+        return (X,Y)
+    }
+    
+    func createGrid(upperLeft: CLLocationCoordinate2D, lowerRight: CLLocationCoordinate2D, walkListItem : WalkMapItem) -> Array<Array<WalkMapItem?>> {
+        
+        var width = abs(Double(lowerRight.longitude) - Double(upperLeft.longitude))
+        var height = abs(upperLeft.latitude - lowerRight.latitude)
+        
+        // discretizing map into bins
+        var numberOfBinsWide = Int(round(width / walkBin))
+        var numberOfBinsHigh = Int(round(height / walkBin))
 
         // new hop width
         self.mapBinX = width / Double(numberOfBinsWide)
@@ -99,8 +106,7 @@ class RandomWalk {
         var walkItem = walkListItem
         while(true) {
             var loc = walkItem.mapItem.placemark.location.coordinate
-            var X = Int(floor(loc.longitude / self.mapBinX))
-            var Y = Int(floor(loc.latitude / self.mapBinY))
+            var (X, Y) = self.getXYBin(loc, upperLeft: upperLeft, lowerRight: lowerRight)
             
             if let otherWalkItem = grid[Y][X]? {
                 otherWalkItem.next = walkItem

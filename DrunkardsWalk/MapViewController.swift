@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var difference : CGFloat = 0.0
     
-    var pubCount = 0
+    var pubCount = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +143,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func googlePlacesSearchResult(items: [MKMapItem]) {
         
-        //TODO: Send info to Random Walk Engine
+        let currentLoc = self.mapView.userLocation.coordinate
+        var placemark = MKPlacemark(coordinate: currentLoc, addressDictionary: nil)
+        var startingMapItem = MKMapItem(placemark: placemark)
+        var randWalk = RandomWalk()
+        
+        var upperLeft = self.mapView.convertPoint(CGPointMake(0.0,0.0), toCoordinateFromView: self.mapView)
+        var lowerRight = self.mapView.convertPoint(CGPointMake(self.mapView.bounds.width, self.mapView.bounds.height), toCoordinateFromView: self.mapView)
+        
+        var walkList = randWalk.walkOverLocations(self.pubCount, startingLocation: startingMapItem, locations: items, upperLeft: upperLeft, lowerRight: lowerRight)
+        
         self.activity!.stopAnimating()
         self.activity!.removeFromSuperview()
         
