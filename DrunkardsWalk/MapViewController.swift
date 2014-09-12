@@ -231,13 +231,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         return [items.first!, items.last!]
     }
     
-    func determineFurthestFromCenter(center: CLLocationCoordinate2D, lats: [MKMapItem], longs: [MKMapItem]) -> (lat: MKMapItem, long: MKMapItem) {
+    func determineFurthestFromCenter(center: CLLocationCoordinate2D, lats: [MKMapItem], longs: [MKMapItem]) {
         
         let distanceLatMin = abs(center.latitude - lats.first!.placemark.coordinate.latitude)
         let distanceLatMax = abs(center.latitude - lats.last!.placemark.coordinate.latitude)
         
         let distanceLongMin = abs(center.longitude - longs.first!.placemark.coordinate.longitude)
         let distanceLongMax = abs(center.longitude - longs.last!.placemark.coordinate.longitude)
+        println("\(distanceLongMin)")
+        println("\(distanceLongMax)")
+
 
         var finalLat = MKMapItem()
         var finalLong = MKMapItem()
@@ -253,17 +256,40 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         } else {
             finalLong = longs.last!
         }
-        println("\(lats.first!.placemark.coordinate.latitude), \(lats.last!.placemark.coordinate.latitude)")
-        println("\(longs.first!.placemark.coordinate.longitude), \(longs.last!.placemark.coordinate.longitude)")
         println("\(center.latitude), \(center.longitude)")
+        println("\(lats.first?.placemark.coordinate.latitude), \(lats.first?.placemark.coordinate.longitude)")
+        println("\(longs.first?.placemark.coordinate.latitude), \(longs.first?.placemark.coordinate.longitude)")
+        println("\(lats.last?.placemark.coordinate.latitude), \(lats.last?.placemark.coordinate.longitude)")
+        println("\(longs.last?.placemark.coordinate.latitude), \(longs.last?.placemark.coordinate.longitude)")
         println("\(finalLat.placemark.coordinate.latitude), \(finalLong.placemark.coordinate.longitude)")
-        
-        return (finalLat, finalLong)
+
+        self.compareDistances(center, lat: finalLat, long: finalLong)
         
     }
     
-    func compareDistances() {
+    func compareDistances(center: CLLocationCoordinate2D, lat: MKMapItem, long: MKMapItem) -> (maxMax: CLLocationCoordinate2D, minMin: CLLocationCoordinate2D) {
         
+        let distanceLat = abs(center.latitude - lat.placemark.coordinate.latitude)
+        let distanceLong = abs(center.longitude - long.placemark.coordinate.longitude)
+        
+        let minLat = center.latitude - distanceLat
+        let maxLat = center.latitude + distanceLat
+        
+        let minLong = center.longitude - distanceLong
+        let maxLong = center.longitude + distanceLong
+        
+        let minCoord = CLLocationCoordinate2D(latitude: minLat, longitude: minLong)
+        let maxCoord = CLLocationCoordinate2D(latitude: maxLat, longitude: maxLong)
+        println("\(center.latitude), \(center.longitude)")
+        println("\(minCoord.latitude), \(minCoord.longitude)")
+        println("\(maxCoord.latitude), \(maxCoord.longitude)")
+
+        
+        return (minCoord, maxCoord)
+    
+        //Make square based on max dist from center
+        //Add dist to lat/long and sub dist from center
+        //take max lat/max long, min lat/min long
     }
     
     override func didReceiveMemoryWarning() {
