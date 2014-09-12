@@ -370,6 +370,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
+  
+    @IBAction func changeMapType(sender: AnyObject) {
+        
+        //changes the mapView Type  ///
+        switch sender.selectedSegmentIndex {
+            
+        case 0:
+            self.mapView.mapType = MKMapType.Standard
+        case 1:
+            self.mapView.mapType = MKMapType.Hybrid
+        case 2:
+            self.mapView.mapType = MKMapType.Satellite
+        default:
+            println("other value")
+            
+        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
