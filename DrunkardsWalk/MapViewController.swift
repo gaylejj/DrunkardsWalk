@@ -250,7 +250,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
   
     @IBAction func changeMapType(sender: AnyObject) {
         
-        //changes the mapView Type
+        //changes the mapView Type  ///
         switch sender.selectedSegmentIndex {
             
         case 0:
