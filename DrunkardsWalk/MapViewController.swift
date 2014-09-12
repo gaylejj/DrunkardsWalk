@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     var difference : CGFloat = 0.0
     
-    var pubCount = 0
+    var pubCount = 5
     var lastTappedLocation : CLLocationCoordinate2D!
     var lastTappedName : String!
     
@@ -166,7 +166,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var maxMax = CLLocationCoordinate2DMake(47.63609422, -122.317276)
         var minMin = CLLocationCoordinate2DMake(47.61100198, -122.355148)
         
-        var randWalk = RandomWalk(maxMax: maxMax, minMin: minMin)
+        var randWalk = RandomWalk(maxMax: coords.maxMax, minMin: coords.minMin)
         
         var walkList = randWalk.walkOverLocations(self.pubCount, startingLocation: startingMapItem, locations: items)
         var mapItemsArray = walkList!.getMapItems()
@@ -288,6 +288,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let distanceLat = abs(center.latitude - lat.placemark.coordinate.latitude) * mapBoundaryMultiplier
         let distanceLong = abs(center.longitude - long.placemark.coordinate.longitude) * mapBoundaryMultiplier
         
+        //TODO: if statement for negative values
         let minLat = center.latitude - distanceLat
         let maxLat = center.latitude + distanceLat
         
@@ -297,7 +298,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let minCoord = CLLocationCoordinate2D(latitude: minLat, longitude: minLong)
         let maxCoord = CLLocationCoordinate2D(latitude: maxLat, longitude: maxLong)
         
-        return (minCoord, maxCoord)
+        return (maxCoord, minCoord)
     }
     
     //MARK: MKAnnotation Setup
