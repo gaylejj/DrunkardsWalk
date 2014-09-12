@@ -142,6 +142,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //MARK: GooglePlacesDelegate
     
     func googlePlacesSearchResult(items: [MKMapItem]) {
+        var minToMaxLats = self.setLatBoundsForWalk(items)
+        var minToMaxLongs = self.setLongBoundsForWalk(items)
+        var distances = self.determineFurthestFromCenter(self.mapView.userLocation.coordinate, lats: minToMaxLats, longs: minToMaxLongs)
         
         //TODO: Send info to Random Walk Engine
         self.activity!.stopAnimating()
@@ -199,6 +202,68 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.mapView.setRegion(region, animated: true)
         completion()
+    }
+    
+    func setLatBoundsForWalk(mapItems: [MKMapItem]) -> ([MKMapItem]) {
+        let lat  = self.mapView.userLocation.coordinate.latitude
+        let long = self.mapView.userLocation.coordinate.longitude
+        
+        var items = mapItems
+        
+        for i in 0..<items.count {
+        //sort and get min/max lat
+            items.sort{$1.placemark.coordinate.latitude > $0.placemark.coordinate.latitude}
+        }
+        return [items.first!, items.last!]
+    }
+    
+    func setLongBoundsForWalk(mapItems: [MKMapItem]) -> ([MKMapItem]) {
+        let lat  = self.mapView.userLocation.coordinate.latitude
+        let long = self.mapView.userLocation.coordinate.longitude
+        
+        var items = mapItems
+        
+        for i in 0..<items.count {
+            //sort and get min/max lat
+            items.sort{$1.placemark.coordinate.longitude > $0.placemark.coordinate.longitude}
+        }
+
+        return [items.first!, items.last!]
+    }
+    
+    func determineFurthestFromCenter(center: CLLocationCoordinate2D, lats: [MKMapItem], longs: [MKMapItem]) -> (lat: MKMapItem, long: MKMapItem) {
+        
+        let distanceLatMin = abs(center.latitude - lats.first!.placemark.coordinate.latitude)
+        let distanceLatMax = abs(center.latitude - lats.last!.placemark.coordinate.latitude)
+        
+        let distanceLongMin = abs(center.longitude - longs.first!.placemark.coordinate.longitude)
+        let distanceLongMax = abs(center.longitude - longs.last!.placemark.coordinate.longitude)
+
+        var finalLat = MKMapItem()
+        var finalLong = MKMapItem()
+        
+        if distanceLatMin > distanceLatMax {
+            finalLat = lats.first!
+        } else {
+            finalLat = lats.last!
+        }
+        
+        if distanceLongMin > distanceLongMax {
+            finalLong = longs.first!
+        } else {
+            finalLong = longs.last!
+        }
+        println("\(lats.first!.placemark.coordinate.latitude), \(lats.last!.placemark.coordinate.latitude)")
+        println("\(longs.first!.placemark.coordinate.longitude), \(longs.last!.placemark.coordinate.longitude)")
+        println("\(center.latitude), \(center.longitude)")
+        println("\(finalLat.placemark.coordinate.latitude), \(finalLong.placemark.coordinate.longitude)")
+        
+        return (finalLat, finalLong)
+        
+    }
+    
+    func compareDistances() {
+        
     }
     
     override func didReceiveMemoryWarning() {
