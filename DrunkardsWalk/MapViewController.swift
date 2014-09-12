@@ -144,14 +144,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func googlePlacesSearchResult(items: [MKMapItem]) {
         
         let currentLoc = self.mapView.userLocation.coordinate
+        
+        var center = CLLocationCoordinate2DMake(47.6235481, -122.336212)
+        
         var placemark = MKPlacemark(coordinate: currentLoc, addressDictionary: nil)
         var startingMapItem = MKMapItem(placemark: placemark)
-        var randWalk = RandomWalk()
+        startingMapItem.name = "Start"
         
-        var upperLeft = self.mapView.convertPoint(CGPointMake(0.0,0.0), toCoordinateFromView: self.mapView)
-        var lowerRight = self.mapView.convertPoint(CGPointMake(self.mapView.bounds.width, self.mapView.bounds.height), toCoordinateFromView: self.mapView)
+        var maxMax = CLLocationCoordinate2DMake(47.63609422, -122.317276)
+        var minMin = CLLocationCoordinate2DMake(47.61100198, -122.355148)
         
-        var walkList = randWalk.walkOverLocations(self.pubCount, startingLocation: startingMapItem, locations: items, upperLeft: upperLeft, lowerRight: lowerRight)
+        var randWalk = RandomWalk(maxMax: maxMax, minMin: minMin)
+        
+        var walkList = randWalk.walkOverLocations(self.pubCount, startingLocation: startingMapItem, locations: items)
         
         self.activity!.stopAnimating()
         self.activity!.removeFromSuperview()
