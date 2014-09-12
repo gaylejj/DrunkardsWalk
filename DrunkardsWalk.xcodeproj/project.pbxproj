@@ -29,9 +29,14 @@
 		42CDDA4419BA69950032B533 /* DrunkardsWalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */; };
 		4E197A7619BE18E300E1AEB4 /* MapSearchEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */; };
 		4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */; };
+		4E4B2D8519C36C240014A3AD /* Uber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4B2D8419C36C240014A3AD /* Uber.swift */; };
+		4E4B2D8719C36EDE0014A3AD /* UBER_API_Badges_2x_64px.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B2D8619C36EDE0014A3AD /* UBER_API_Badges_2x_64px.png */; };
+		4E4B2D8919C36F5C0014A3AD /* UBER_API_Badges_1x_64px.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E4B2D8819C36F5C0014A3AD /* UBER_API_Badges_1x_64px.png */; };
 		4EA3683B19C358A000CE0070 /* Pub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3683A19C358A000CE0070 /* Pub.swift */; };
 		4EA3683D19C358A100CE0070 /* PubCrawl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3683C19C358A100CE0070 /* PubCrawl.swift */; };
 		4EA3683F19C358D400CE0070 /* CDPubCrawl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA3683E19C358D400CE0070 /* CDPubCrawl.swift */; };
+		4EA3684119C3667800CE0070 /* checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA3684019C3667800CE0070 /* checked.png */; };
+		4EA3684319C368B200CE0070 /* unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EA3684219C368B200CE0070 /* unchecked.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +54,7 @@
 		252C0B5F19BA7096007A3879 /* humanRightFoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot.png; sourceTree = "<group>"; };
 		2572ED2A19C2447300DB9755 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		2572ED2F19C2ACB500DB9755 /* beer case.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer case.png"; sourceTree = "<group>"; };
-		25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashlyticsAPI.swift; path = ../../../../Downloads/CrashlyticsAPI.swift; sourceTree = "<group>"; };
+		25A1A68619C23F3F00918C2C /* CrashlyticsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CrashlyticsAPI.swift; path = ../CrashlyticsAPI.swift; sourceTree = "<group>"; };
 		25C527FD19BE70BF007FBE80 /* AnimationEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationEngine.swift; sourceTree = "<group>"; };
 		25C5280019BE7198007FBE80 /* humanLeftFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanLeftFoot18px.png; sourceTree = "<group>"; };
 		25C5280119BE7198007FBE80 /* humanRightFoot18px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = humanRightFoot18px.png; sourceTree = "<group>"; };
@@ -72,9 +77,14 @@
 		42CDDA4319BA69950032B533 /* DrunkardsWalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrunkardsWalkTests.swift; sourceTree = "<group>"; };
 		4E197A7519BE18E300E1AEB4 /* MapSearchEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSearchEngine.swift; sourceTree = "<group>"; };
 		4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
+		4E4B2D8419C36C240014A3AD /* Uber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uber.swift; sourceTree = "<group>"; };
+		4E4B2D8619C36EDE0014A3AD /* UBER_API_Badges_2x_64px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UBER_API_Badges_2x_64px.png; sourceTree = "<group>"; };
+		4E4B2D8819C36F5C0014A3AD /* UBER_API_Badges_1x_64px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UBER_API_Badges_1x_64px.png; sourceTree = "<group>"; };
 		4EA3683A19C358A000CE0070 /* Pub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pub.swift; sourceTree = "<group>"; };
 		4EA3683C19C358A100CE0070 /* PubCrawl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubCrawl.swift; sourceTree = "<group>"; };
 		4EA3683E19C358D400CE0070 /* CDPubCrawl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDPubCrawl.swift; sourceTree = "<group>"; };
+		4EA3684019C3667800CE0070 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		4EA3684219C368B200CE0070 /* unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unchecked.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +109,10 @@
 		252C0B5B19BA7096007A3879 /* Drunkard's Walk Digital Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4E4B2D8819C36F5C0014A3AD /* UBER_API_Badges_1x_64px.png */,
+				4E4B2D8619C36EDE0014A3AD /* UBER_API_Badges_2x_64px.png */,
+				4EA3684019C3667800CE0070 /* checked.png */,
+				4EA3684219C368B200CE0070 /* unchecked.png */,
 				2572ED2F19C2ACB500DB9755 /* beer case.png */,
 				25C527FF19BE7198007FBE80 /* Straight Feet */,
 				252C0B5C19BA7096007A3879 /* Feet */,
@@ -159,6 +173,7 @@
 				4233548519BE16CE009C34D9 /* RandomWalk.swift */,
 				4254A6A519C0F77300B94D52 /* WalkMapItem.swift */,
 				4E197AAE19BF856600E1AEB4 /* GooglePlaces.swift */,
+				4E4B2D8419C36C240014A3AD /* Uber.swift */,
 				42CDDA3419BA69950032B533 /* Main.storyboard */,
 				42CDDA3719BA69950032B533 /* Images.xcassets */,
 				42CDDA2B19BA69950032B533 /* Supporting Files */,
@@ -301,14 +316,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EA3684319C368B200CE0070 /* unchecked.png in Resources */,
 				252C0B6319BA7096007A3879 /* humanRightFoot.png in Resources */,
 				25C5280319BE7198007FBE80 /* humanRightFoot18px.png in Resources */,
+				4E4B2D8919C36F5C0014A3AD /* UBER_API_Badges_1x_64px.png in Resources */,
 				2572ED3019C2ACB500DB9755 /* beer case.png in Resources */,
 				252C0B6119BA7096007A3879 /* humanLeftFoot.png in Resources */,
 				386E1F9C19C22352004FEB23 /* google.plist in Resources */,
 				42CDDA3619BA69950032B533 /* Main.storyboard in Resources */,
 				25C5280219BE7198007FBE80 /* humanLeftFoot18px.png in Resources */,
+				4EA3684119C3667800CE0070 /* checked.png in Resources */,
 				42CDDA3819BA69950032B533 /* Images.xcassets in Resources */,
+				4E4B2D8719C36EDE0014A3AD /* UBER_API_Badges_2x_64px.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +364,7 @@
 				38D52EA719BFA79600A53C75 /* NotificationController.swift in Sources */,
 				42CDDA3319BA69950032B533 /* MapViewController.swift in Sources */,
 				4254A6A619C0F77300B94D52 /* WalkMapItem.swift in Sources */,
+				4E4B2D8519C36C240014A3AD /* Uber.swift in Sources */,
 				4EA3683D19C358A100CE0070 /* PubCrawl.swift in Sources */,
 				4E197AAF19BF856600E1AEB4 /* GooglePlaces.swift in Sources */,
 				42CDDA2E19BA69950032B533 /* AppDelegate.swift in Sources */,
