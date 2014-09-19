@@ -127,6 +127,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func crawlButtonPressed(sender: AnyObject) {
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
+        self.removeAllAnnotations()
+        
         self.setRegion { () -> Void in
             self.googlePlaces.searchWithDelegate(self.mapView.userLocation.coordinate, radius: 1000, query: "bar")
             self.activity.hidesWhenStopped = true
@@ -158,13 +160,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let currentLoc = self.mapView.userLocation.coordinate
         
         //var center = CLLocationCoordinate2DMake(47.6235481, -122.336212)
+//        var maxMax = CLLocationCoordinate2DMake(47.63609422, -122.317276)
+//        var minMin = CLLocationCoordinate2DMake(47.61100198, -122.355148)
         
         var placemark = MKPlacemark(coordinate: currentLoc, addressDictionary: nil)
         var startingMapItem = MKMapItem(placemark: placemark)
         startingMapItem.name = "Start"
-        
-        var maxMax = CLLocationCoordinate2DMake(47.63609422, -122.317276)
-        var minMin = CLLocationCoordinate2DMake(47.61100198, -122.355148)
         
         var randWalk = RandomWalk(maxMax: coords.maxMax, minMin: coords.minMin)
         
@@ -378,6 +379,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             annot.title = item.name
             self.mapView.addAnnotation(annot)
         }
+    }
+    
+    func removeAllAnnotations() {
+        let annotations = self.mapView.annotations
+        self.mapView.removeAnnotations(annotations)
     }
     
   
