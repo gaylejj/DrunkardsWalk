@@ -128,6 +128,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         println("\(self.mapView.userLocation.coordinate.latitude), \(self.mapView.userLocation.coordinate.longitude)")
         
         self.removeAllAnnotations()
+        self.locationManager.stopUpdatingLocation()
         
         self.setRegion { () -> Void in
             self.googlePlaces.searchWithDelegate(self.mapView.userLocation.coordinate, radius: 1000, query: "bar")
